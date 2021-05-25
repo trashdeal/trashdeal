@@ -85,7 +85,7 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
-                                    android:text="Use Bin"
+                                    android:text="My Bin"
                                     android:textColor="@color/colorPrimaryDark"
                                     android:textColorHighlight="@color/colorPrimary"
                                     android:textSize="16sp"></TextView>
