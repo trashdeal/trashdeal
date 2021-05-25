@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/binName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="31dp"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        android:textSize="30sp"
+        android:text="Assolna Bin"/>
+
+    <TextView
+        android:id="@+id/pointsEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/binName"
+        android:text="+20"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/wasteType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/binName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/wasteWeight"
+        android:textSize="25sp"
+        android:text="Plastic"/>
+
+    <TextView
+        android:id="@+id/wasteWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/binName"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="25sp"
+        android:text="20Kg"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pointsEarned"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/wasteType"
+        android:text="Points"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="25sp"
+        android:text="2nd May,2021"/>
+</RelativeLayout>

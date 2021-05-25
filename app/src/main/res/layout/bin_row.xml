@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/binName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="11dp"
+        android:textSize="30sp"
+        android:text="Test Bin" />
+
+    <TextView
+        android:id="@+id/binAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/binName"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="2dp"
+        android:text="assolna, Margao, Goa"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/binDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/binName"
+        android:text="20Km"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/binDistance"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/binAddress"
+        android:text="Away"
+        android:textSize="20sp" />
+</RelativeLayout>

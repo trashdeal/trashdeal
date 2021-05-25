@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "151393581712",
+    "project_id": "trashdeal-fc819",
+    "storage_bucket": "trashdeal-fc819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151393581712:android:ef3517df486400a020f615",
+        "android_client_info": {
+          "package_name": "com.example.trashdeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151393581712-hb1f7cs314jnj6c1c42h92pehe8sf4et.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trashdeal",
+            "certificate_hash": "5cc2458e07a443a362131ce7c254068e79a24963"
+          }
+        },
+        {
+          "client_id": "151393581712-92getq19f8n4ef9p1k1ocots7d841a0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_0HhLwHuL-dZFbvqitNU7JTS8LNuYkdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151393581712-92getq19f8n4ef9p1k1ocots7d841a0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
