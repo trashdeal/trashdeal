@@ -45,11 +45,13 @@ class BinsNearMe : AppCompatActivity() {
         }
         fun binList(){
             val doc: CollectionReference = fStore.collection("binLocation")
+            var binLatitude = 0.0
+            var binLongitude = 0.0
             doc.get().addOnSuccessListener {
                 val binList : ArrayList<BinLocation> = ArrayList()
                 for(document in it){
-                    val binLatitude = document.data["Latitude"] as Double
-                    val binLongitude = document.data["Longitude"] as Double
+                    binLatitude = document.data["Latitude"] as Double
+                    binLongitude = document.data["Longitude"] as Double
                     Log.d("TAG", "bin current latitude: $binLatitude and my current bin longitude: $binLongitude")
                     var results = FloatArray(10)
                     Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLatitude, binLongitude ,results)
@@ -65,6 +67,10 @@ class BinsNearMe : AppCompatActivity() {
                     AdapterView.OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
                         val intent = Intent(this, ConnectBin::class.java)
                         intent.putExtra("userBin", binList[position].binName)
+                        intent.putExtra("myLatitude", myLocation.latitude.toString())
+                        intent.putExtra("myLongitude", myLocation.longitude.toString())
+                        intent.putExtra("binLatitude", binLatitude.toString())
+                        intent.putExtra("binLongitude", binLongitude.toString())
                         startActivity(intent)
                     }
             }

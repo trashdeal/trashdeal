@@ -3,6 +3,7 @@ package com.example.trashdeal
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -25,6 +26,7 @@ class ConnectBin : AppCompatActivity() {
         val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
         val dryBtn = findViewById<Button>(R.id.dryBtn)
         val wetBtn = findViewById<Button>(R.id.wetBtn)
+        val getDirectionBtn = findViewById<Button>(R.id.getDirectionBtn)
         var userBin = intent.getStringExtra("userBin").toString()
         var plastic_bin = Bin("",0.0,0,0,"","")
         val ref = FirebaseDatabase.getInstance().getReference(userBin)
@@ -39,6 +41,19 @@ class ConnectBin : AppCompatActivity() {
                 Log.w("TAG", "loadPost:onCancelled", databaseError.toException())
             }
         })
+        getDirectionBtn.setOnClickListener{
+            var myLatitude= intent.getStringExtra("myLatitude").toString()
+            var myLongitude = intent.getStringExtra("myLongitude").toString()
+            var binLatitude = intent.getStringExtra("binLatitude").toString()
+            var binLongitude = intent.getStringExtra("binLongitude").toString()
+            val mapsLink = "https://www.google.co.in/maps/dir/"+myLatitude+","+myLongitude+
+                    "/"+binLatitude+","+binLongitude
+            val uri: Uri? = Uri.parse(mapsLink)
+            val intent = Intent(Intent.ACTION_VIEW,uri)
+            intent.setPackage("com.google.android.apps.maps")
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
         plasticBtn.setOnClickListener{
             if (plastic_bin.Status == "start") {
                 Toast.makeText(applicationContext, "Sorry! Bin is in Use", Toast.LENGTH_SHORT).show()
