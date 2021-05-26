@@ -10,17 +10,17 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
+import com.google.android.material.slider.Slider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class BinsNearMe : AppCompatActivity() {
@@ -30,6 +30,7 @@ class BinsNearMe : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     var myLocation: Location = Location("")
+    var distanceSet = 20.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bins_near_me)
@@ -38,27 +39,48 @@ class BinsNearMe : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
         val listview = findViewById<ListView>(R.id.listView2)
-        val doc: CollectionReference = fStore.collection("binLocation")
-        doc.get().addOnSuccessListener {
-            val binList : ArrayList<BinLocation> = ArrayList()
-            for(document in it){
-                val binLatitude = document.data["Latitude"] as Double
-                val binLongitude = document.data["Longitude"] as Double
-                Log.d("TAG", "bin current latitude: $binLatitude and my current bin longitude: $binLongitude")
-                var results = FloatArray(10)
-                Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLatitude, binLongitude ,results)
-                val distance = String.format("%.1f",results[0]/1000)
-                val currentBin = BinLocation(document.data["Bin Name"].toString(),getCityName(binLatitude, binLongitude),distance)
-                binList.add(currentBin)
-            }
-            val adapter = BinLocationAdapter(this, binList)
-            listview.adapter = adapter
-            listview.onItemClickListener = OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
-                val intent = Intent(this, ConnectBin::class.java)
-                intent.putExtra("userBin", binList[position].binName)
-                startActivity(intent)
+        val distanceSlider = findViewById<Slider>(R.id.slider)
+        distanceSlider.setLabelFormatter { value: Float ->
+            value.toInt().toString()+"Km"
+        }
+        fun binList(){
+            val doc: CollectionReference = fStore.collection("binLocation")
+            doc.get().addOnSuccessListener {
+                val binList : ArrayList<BinLocation> = ArrayList()
+                for(document in it){
+                    val binLatitude = document.data["Latitude"] as Double
+                    val binLongitude = document.data["Longitude"] as Double
+                    Log.d("TAG", "bin current latitude: $binLatitude and my current bin longitude: $binLongitude")
+                    var results = FloatArray(10)
+                    Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLatitude, binLongitude ,results)
+                    val distance = String.format("%.1f",results[0]/1000)
+                    if(distance.toFloat() <= distanceSet){
+                        val currentBin = BinLocation(document.data["Bin Name"].toString(),getCityName(binLatitude, binLongitude),distance)
+                        binList.add(currentBin)
+                    }
+                }
+                val adapter = BinLocationAdapter(this, binList)
+                listview.adapter = adapter
+                listview.onItemClickListener =
+                    AdapterView.OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
+                        val intent = Intent(this, ConnectBin::class.java)
+                        intent.putExtra("userBin", binList[position].binName)
+                        startActivity(intent)
+                    }
             }
         }
+        binList()
+        distanceSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
+                Log.d("TAG", "starteddd $slider")
+            }
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                Log.d("TAG", "eddd ${slider.value}")
+                distanceSet = slider.value.toDouble()
+                binList()
+            }
+        })
     }
     private fun CheckPermission():Boolean{
         //this function will return a boolean
