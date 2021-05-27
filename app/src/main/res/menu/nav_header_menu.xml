@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/miItem1"
+        android:title="Home"
+        android:icon="@drawable/home_icon"
+        />
+    <item android:id="@+id/miItem2" android:title="My profile" android:icon="@drawable/user_details"
+        />
+    <item android:id="@+id/miItem4" android:title="Point Details" android:icon="@drawable/point_detail_icon"
+        />
+    <item android:id="@+id/miItem6" android:title="Terms and Conditions" android:icon="@drawable/tandc_icon"
+        />
+    <item android:id="@+id/miItem8" android:title="More Information" android:icon="@drawable/more_info"
+        />
+    <item android:id="@+id/miItem3" android:title="Help" android:icon="@drawable/help_icon"
+        />
+    <item android:id="@+id/miItem7" android:title="Logout" android:icon="@drawable/logout_icon"
+        />
+</menu>
