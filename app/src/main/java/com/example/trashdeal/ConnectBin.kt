@@ -51,7 +51,7 @@ class ConnectBin : AppCompatActivity() {
             val uri: Uri? = Uri.parse(mapsLink)
             val intent = Intent(Intent.ACTION_VIEW,uri)
             intent.setPackage("com.google.android.apps.maps")
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
         plasticBtn.setOnClickListener{
@@ -88,11 +88,11 @@ class ConnectBin : AppCompatActivity() {
                         }
                     })
                 builder.setNegativeButton("Cancel",
-                    DialogInterface.OnClickListener { dialog, which ->
+                    DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                         ref.child("PlasticBin").child("Status").setValue("end")
                     })
-                builder.setOnKeyListener(DialogInterface.OnKeyListener { dialog, keyCode, event -> // Prevent dialog close on back press button
+                builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
                     keyCode == KeyEvent.KEYCODE_BACK
                 })
                 builder.show()

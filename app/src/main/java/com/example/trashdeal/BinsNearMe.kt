@@ -26,10 +26,11 @@ import java.util.*
 class BinsNearMe : AppCompatActivity() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
-    var PERMISSION_ID = 1000
+    private var PERMISSION_ID = 1000
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     var myLocation: Location = Location("")
+    var binLocation: Location = Location("")
     var distanceSet = 20.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,19 +46,17 @@ class BinsNearMe : AppCompatActivity() {
         }
         fun binList(){
             val doc: CollectionReference = fStore.collection("binLocation")
-            var binLatitude = 0.0
-            var binLongitude = 0.0
             doc.get().addOnSuccessListener {
                 val binList : ArrayList<BinLocation> = ArrayList()
                 for(document in it){
-                    binLatitude = document.data["Latitude"] as Double
-                    binLongitude = document.data["Longitude"] as Double
-                    Log.d("TAG", "bin current latitude: $binLatitude and my current bin longitude: $binLongitude")
+                    binLocation.latitude = document.data["Latitude"] as Double
+                    binLocation.longitude = document.data["Longitude"] as Double
+                    Log.d("TAG", "bin current latitude: ${binLocation.latitude} and my current bin longitude: ${binLocation.longitude}")
                     var results = FloatArray(10)
-                    Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLatitude, binLongitude ,results)
+                    Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLocation.latitude, binLocation.longitude ,results)
                     val distance = String.format("%.1f",results[0]/1000)
                     if(distance.toFloat() <= distanceSet){
-                        val currentBin = BinLocation(document.data["Bin Name"].toString(),getCityName(binLatitude, binLongitude),distance)
+                        val currentBin = BinLocation(document.data["Bin Name"].toString(),getCityName(binLocation.latitude, binLocation.longitude),distance)
                         binList.add(currentBin)
                     }
                 }
@@ -69,8 +68,8 @@ class BinsNearMe : AppCompatActivity() {
                         intent.putExtra("userBin", binList[position].binName)
                         intent.putExtra("myLatitude", myLocation.latitude.toString())
                         intent.putExtra("myLongitude", myLocation.longitude.toString())
-                        intent.putExtra("binLatitude", binLatitude.toString())
-                        intent.putExtra("binLongitude", binLongitude.toString())
+                        intent.putExtra("binLatitude", binLocation.latitude.toString())
+                        intent.putExtra("binLongitude", binLocation.longitude.toString())
                         startActivity(intent)
                     }
             }
@@ -203,7 +202,7 @@ class BinsNearMe : AppCompatActivity() {
         }
     }
     private fun getCityName(lat: Double,long: Double):String{
-        var cityName:String = ""
+        var cityName = ""
         var countryName = ""
         var geoCoder = Geocoder(this, Locale.getDefault())
         var Adress = geoCoder.getFromLocation(lat,long,3)

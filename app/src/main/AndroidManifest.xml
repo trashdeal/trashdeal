@@ -23,7 +23,7 @@
         <activity android:name=".PointsDetails" />
         <activity android:name=".MyProfile" />
         <activity android:name=".UserTransactions" />
-        <activity android:name=".BinsNearMe" android:theme="@style/AppTheme1.DarkActionBar"/>
+        <activity android:name=".BinsNearMe" android:theme="@style/AppTheme.NoActionBar." />
         <activity android:name=".ConnectBin" />
         <activity android:name=".Facts" />
         <activity android:name=".UseBin" />
