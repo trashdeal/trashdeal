@@ -3,10 +3,15 @@ package com.example.trashdeal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ForegroundColorSpan
+import android.widget.TextView
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -29,15 +34,22 @@ class MobnoRegister : AppCompatActivity() {
         fStore = FirebaseFirestore.getInstance()
         val phoneNo = findViewById<EditText>(R.id.phone)
         val nextBtn = findViewById<Button>(R.id.getOtpBtn)
+        val textView1 = findViewById<TextView>(R.id.textView1)
+        val color: Int = getResources().getColor(R.color.colorPrimaryDark)
+        val text1 = "We will send you an OTP verification"
+        val s1 = SpannableString(text1)
+        val ssgreen = ForegroundColorSpan(color)
+        s1.setSpan(ssgreen, 0, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        textView1.text=s1
         val ccp = findViewById<CountryCodePicker>(R.id.ccp).selectedCountryCode.toString()
         nextBtn.setOnClickListener {
             val mobNo = "+$ccp${phoneNo.text.toString()}"
             Log.d("TAG", "Mobile No: $mobNo")
-                if(mobNo.isEmpty() || mobNo.length < 10){
-                    Toast.makeText(applicationContext, "Enter Valid Mobile Number", Toast.LENGTH_LONG).show()
-                }else{
-                    sendVerification(mobNo)
-                }
+            if(mobNo.isEmpty() || mobNo.length < 10){
+                Toast.makeText(applicationContext, "Enter Valid Mobile Number", Toast.LENGTH_LONG).show()
+            }else{
+                sendVerification(mobNo)
+            }
         }
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 

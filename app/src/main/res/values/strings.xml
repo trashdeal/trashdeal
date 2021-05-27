@@ -9,4 +9,58 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="tandc">
+        Acceptable use policy
+    </string>
+    <string name="tandc1">
+        This acceptable use policy sets forth the general guidelines and acceptable and prohibited uses of the "T₹ASHDEAL" mobile application and any of its related products and services. This Policy is a legally binding agreement between you and this Mobile Application developer. By accessing and using the Mobile Application and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the terms "User", "you" or "your" shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Mobile Application and Services. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Mobile Application and Services.
+    </string>
+    <string name="tandc2">Prohibited activities and uses</string>
+    <string name="tandc3">You may not use the Mobile Application and Services to engage in activity that is illegal under applicable law, that is harmful to others, or that would subject us to liability, including, without limitation, in connection with any of the following, each of which is prohibited under this Policy:</string>
+    <string name="tandc4">- Disclosing sensitive personal information about others.
+- Collecting, or attempting to collect, personal information about third parties without their knowledge or consent.
+- Threatening harm to persons or property or otherwise harassing behavior.
+- Infringing the intellectual property or other proprietary rights of others.
+- Facilitating, aiding, or encouraging any of the above activities through the Mobile Application and Services.
+</string>
+    <string name="tandc5">System abuse</string>
+    <string name="tandc6">Any User in violation of the Mobile Application and Services security is subject to criminal and civil liability, as well as immediate account termination. Examples include, but are not limited to the following:</string>
+    <string name="tandc7">- Use or distribution of tools designed for compromising security of the Mobile Application and Services.
+- Intentionally or negligently transmitting files containing a computer virus or corrupted data.
+- Accessing another network without permission, including to probe or scan for vulnerabilities or breach security or authentication measures.
+- Unauthorized scanning or monitoring of data on any network or system without proper authorization of the owner of the system or network.
+</string>
+    <string name="tandc8">Service resources</string>
+    <string name="tandc9">You may not consume excessive amounts of the resources of the Mobile Application and Services or use the Mobile Application and Services in any way which results in performance issues or which interrupts the Services for other Users. Prohibited activities that contribute to excessive use, include without limitation:</string>
+    <string name="tandc10">- Deliberate attempts to overload the Mobile Application and Services and broadcast attacks (i.e. denial of service attacks).
+- Engaging in any other activities that degrade the usability and performance of the Mobile Application and Services.</string>
+    <string name="tandc11">No spam policy</string>
+    <string name="tandc12">You may not use the Mobile Application and Services to send spam or bulk unsolicited messages. We maintain a zero tolerance policy for use of the Mobile Application and Services in any manner associated with the transmission, distribution or delivery of any bulk e-mail, including unsolicited bulk or unsolicited commercial e-mail, or the sending, assisting, or commissioning the transmission of commercial e-mail that does not comply with the U.S. CAN-SPAM Act of 2003 ("SPAM").</string>
+    <string name="tandc13">Your products or services advertised via SPAM (i.e. Spamvertised) may not be used in conjunction with the Mobile Application and Services. This provision includes, but is not limited to, SPAM sent via fax, phone, postal mail, email, instant messaging, or newsgroups.</string>
+    <string name="tandc14">Security</string>
+    <string name="tandc15">You take full responsibility for maintaining reasonable security precautions for your account. You are responsible for protecting and updating any login account provided to you for the Mobile Application and Services. You must protect the confidentiality of your login details, and you should change your password periodically.</string>
+    <string name="tandc16">Enforcement</string>
+    <string name="tandc17">We reserve our right to be the sole arbiter in determining the seriousness of each infringement and to immediately take corrective actions, including but not limited to:</string>
+    <string name="tandc18">- Suspending or terminating your Service with or without notice upon any violation of this Policy. Any violations may also result in the immediate suspension or termination of your account.
+- Disabling or removing any content which is prohibited by this Policy, including to prevent harm to others or to us or the Mobile Application and Services, as determined by us in our sole discretion.
+- Reporting violations to law enforcement as determined by us in our sole discretion.
+- A failure to respond to an email from our abuse team within 2 days, or as otherwise specified in the communication to you, may result in the suspension or termination of your account.</string>
+    <string name="tandc19">Suspended and terminated User accounts due to violations will not be re-activated. A backup of User’s data may be requested, however, we may not be able to provide you with one and, as such, you are strongly encouraged to take your own backups.</string>
+    <string name="tandc20">Nothing contained in this Policy shall be construed to limit our actions or remedies in any way with respect to any of the prohibited activities. In addition, we reserve at all times all rights and remedies available to us with respect to such activities at law or in equity.</string>
+    <string name="tandc21">Reporting violations</string>
+    <string name="tandc22">If you have discovered and would like to report a violation of this Policy, please contact us immediately. We will investigate the situation and provide you with full assistance.</string>
+    <string name="tandc23">Changes and amendments</string>
+    <string name="tandc24">We reserve the right to modify this Policy or its terms relating to the Mobile Application and Services at any time, effective upon posting of an updated version of this Policy in the Mobile Application. When we do, we will post a notification in the Mobile Application. Continued use of the Mobile Application and Services after any such changes shall constitute your consent to such changes.</string>
+    <string name="tandc25">Acceptance of this policy</string>
+    <string name="tandc26">You acknowledge that you have read this Policy and agree to all its terms and conditions. By accessing and using the Mobile Application and Services you agree to be bound by this Policy. If you do not agree to abide by the terms of this Policy, you are not authorized to access or use the Mobile Application and Services.</string>
+    <string name="tandc27">Contacting us</string>
+    <string name="tandc28">If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to it, you may send an email to trashdeal2021@gmail.com.</string>
+
+    <string name="gmail_link">
+        <a href="https://mail.google.com/mail/u/1/#inbox?compose=new">trashdeal2021@gmail.com</a>
+    </string>
+    <string name="phone_link">
+        <a href="tel:+917378407152">+91 7378407152</a>
+    </string>
+
 </resources>

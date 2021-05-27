@@ -30,13 +30,13 @@ class OtpRegister : AppCompatActivity() {
         val verifyBtn = findViewById<Button>(R.id.verifyBtn)
         verifyBtn.setOnClickListener {
             var otp:String = otpInp.text.toString()
-                if(otp.isNotEmpty() && otp.length == 6) {
-                    val credential: PhoneAuthCredential =
-                        PhoneAuthProvider.getCredential(storedVerificationId, otp)
-                    verifyAuth(credential)
-                } else{
-                    Toast.makeText(applicationContext, "(Invalid OTP)", Toast.LENGTH_LONG).show()
-                }
+            if(otp.isNotEmpty() && otp.length == 6) {
+                val credential: PhoneAuthCredential =
+                    PhoneAuthProvider.getCredential(storedVerificationId, otp)
+                verifyAuth(credential)
+            } else{
+                Toast.makeText(applicationContext, "(Invalid OTP)", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
