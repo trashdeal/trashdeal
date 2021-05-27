@@ -7,7 +7,9 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity"
 android:id="@+id/drawerLayout">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -253,7 +255,7 @@ android:id="@+id/drawerLayout">
 
     </RelativeLayout>
 </LinearLayout>
-
+</ScrollView>
 <com.google.android.material.navigation.NavigationView
     android:id="@+id/naView"
     android:layout_width="wrap_content"
