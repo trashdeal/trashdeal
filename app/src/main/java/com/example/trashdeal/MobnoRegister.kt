@@ -71,6 +71,7 @@ class MobnoRegister : AppCompatActivity() {
                     putExtra("otp",storedVerificationId)
                 }
                 startActivity(intent)
+                finish()
             }
         }
     }

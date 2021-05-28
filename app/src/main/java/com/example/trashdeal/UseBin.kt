@@ -67,6 +67,7 @@ class UseBin : AppCompatActivity() {
         val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
         var userBin = intent.getStringExtra("userBin").toString()
         var bin_type = intent.getStringExtra("binType").toString()
+        var waste_type = intent.getStringExtra("wasteType").toString()
         val ref = FirebaseDatabase.getInstance().getReference(userBin).child(bin_type)
         ref.child("OTP").setValue(0)
         ref.child("Status").setValue("end")
@@ -86,7 +87,7 @@ class UseBin : AppCompatActivity() {
                 var userTransaction = hashMapOf(
                     "Date" to dateTime,
                     "PointsEarned" to pointsEarned,
-                    "WasteType" to bin_type,
+                    "WasteType" to waste_type,
                     "Bin" to userBin,
                     "WasteWeight" to userWeight
                 )

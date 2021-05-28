@@ -96,6 +96,7 @@ class ConnectBin : AppCompatActivity() {
                                 startActivity(Intent(applicationContext, UseBin::class.java).apply {
                                     putExtra("userBin", userBin)
                                     putExtra("binType", "PlasticBin")
+                                    putExtra("wasteType", "Plastic")
                                 })
                             }
                         })
