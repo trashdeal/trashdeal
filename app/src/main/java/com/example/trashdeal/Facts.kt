@@ -18,17 +18,25 @@ class Facts : AppCompatActivity() {
         val factView = findViewById<TextView>(R.id.factView)
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
+        var time:Long = 1000
         val doc: DocumentReference = fStore.collection("facts").document("0EaVbIPo1AnbSaBp0Ypj")
         doc.get().addOnSuccessListener {
             val index = (Math.random() * (33 - 1 + 1) + 1).toInt().toString()
             val fact = it.data?.get(index).toString()
             factView.text = fact
+            if(fact.length in 0..30){
+                time = 4000
+            }else if(fact.length in 31..90){
+                time = 6000
+            }else if(fact.length in 91..200){
+                time = 7000
+            }
         }
         @Suppress("DEPRECATION")
         Handler().postDelayed({
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent) //start new activity here
             finish()
-        }, 4000)
+        }, time)
     }
 }

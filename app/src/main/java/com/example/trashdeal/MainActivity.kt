@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
                     toggle.syncState()
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                     binding.naView
-                        
                         .setNavigationItemSelectedListener {
                         when(it.itemId){
                             R.id.miItem1 ->  startActivity(Intent(this, MainActivity::class.java));
@@ -42,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                             R.id.miItem4 ->  startActivity(Intent(this, PointsDetails::class.java));
                             R.id.miItem6 ->  startActivity(Intent(this, TandC2::class.java));
                             R.id.miItem3 ->  startActivity(Intent(this, Help::class.java));
+                            R.id.miItem7 ->  startActivity(Intent(this, MobnoRegister::class.java));
                             R.id.miItem8 ->  startActivity(Intent(this, MoreInformation::class.java));
                         }
                         true

@@ -41,7 +41,7 @@ class RegisterUser : AppCompatActivity() {
             if (fName.isEmpty() || sName.equals("") || sEmail.equals("")) {
                 Toast.makeText(this,"Empty Fields", Toast.LENGTH_SHORT).show()
             } else {
-                val user = hashMapOf("FirstName" to fName,"LastName" to sName,"Email" to sEmail)
+                val user = hashMapOf("FirstName" to fName,"LastName" to sName,"Email" to sEmail, "DefaultBin" to "", "Points" to 0)
                 doc.set(user).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         startActivity(Intent(applicationContext, MainActivity::class.java))

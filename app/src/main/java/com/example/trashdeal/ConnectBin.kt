@@ -48,6 +48,7 @@ class ConnectBin : AppCompatActivity() {
             var binLongitude = intent.getStringExtra("binLongitude").toString()
             val mapsLink = "https://www.google.co.in/maps/dir/"+myLatitude+","+myLongitude+
                     "/"+binLatitude+","+binLongitude
+//            val mapsLink = "https://www.google.co.in/maps/dir/$binLatitude,$binLongitude"
             val uri: Uri? = Uri.parse(mapsLink)
             val intent = Intent(Intent.ACTION_VIEW,uri)
             intent.setPackage("com.google.android.apps.maps")
