@@ -2,8 +2,12 @@ package com.example.trashdeal
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +25,13 @@ class RegisterUser : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
         userID = auth.currentUser.uid
+        val textspan = findViewById<TextView>(R.id.textspan)
+        val color: Int = getResources().getColor(R.color.colorPrimaryDark)
+        val text1 = "Enter your credentials"
+        val s1 = SpannableString(text1)
+        val ssgreen = ForegroundColorSpan(color)
+        s1.setSpan(ssgreen, 0, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        textspan.text=s1
         val doc:DocumentReference = fStore.collection("user").document(userID)
         val submitBtn = findViewById<Button>(R.id.submit_btn)
         submitBtn.setOnClickListener {

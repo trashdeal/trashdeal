@@ -25,7 +25,7 @@ class SplashScreen : AppCompatActivity() {
         val video = Uri.parse("android.resource://" + packageName + "/" + R.raw.logosplashscreen)
         videoView.setVideoURI(video)
         videoView.setOnCompletionListener(MediaPlayer.OnCompletionListener {
-            startActivity(Intent(applicationContext, GettingStarted::class.java))
+            startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
         })
         videoView.start()
