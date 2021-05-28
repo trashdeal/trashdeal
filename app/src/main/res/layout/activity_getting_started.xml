@@ -26,78 +26,79 @@
 
     <ImageView
         android:id="@+id/welcomegif"
-        android:layout_width="428dp"
-        android:layout_height="167dp"
+        android:layout_width="290dp"
+        android:layout_height="256dp"
         android:src="@drawable/logoimagegreenbkg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
+        app:layout_constraintVertical_bias="0.484" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:textStyle="bold"
-        android:text="WELCOME !"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="45dp"
+        android:layout_width="261dp"
+        android:layout_height="77dp"
         android:letterSpacing="0.03"
-        app:layout_constraintBottom_toTopOf="@+id/welcomegif"
+        android:orientation="horizontal"
+        android:text="Get Started"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.067" />
 
     <TextView
         android:id="@+id/txt0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/amethysta"
+        android:paddingLeft="80dp"
         android:text="  T₹ASHDEAL"
-        android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="13sp"
+        android:textSize="21sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backimg"
-        app:layout_constraintVertical_bias="0.552" />
+        app:layout_constraintVertical_bias="0.689" />
 
     <TextView
         android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingLeft="50dp"
         android:text="Earn Cash From Trash"
+        android:textColor="#000"
+        android:textSize="23sp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="#FFFF"
-        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backimg"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <Button
         android:id="@+id/getStarted"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg_rounded_corners"
-        android:text="Get Started"
+        android:text="Next"
         android:textColor="#47CCDD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/welcomegif"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896" />
 </androidx.constraintlayout.widget.ConstraintLayout>
