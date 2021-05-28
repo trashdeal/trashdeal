@@ -1,9 +1,9 @@
 package com.example.trashdeal
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class TandC : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,11 +13,13 @@ class TandC : AppCompatActivity() {
         val declinebtn = findViewById<Button>(R.id.decline)
         acceptbtn.setOnClickListener {
             val intent = Intent(this, MobnoRegister::class.java)
-            startActivity(intent);
+            startActivity(intent)
+            finish()
         }
         declinebtn.setOnClickListener {
             val intent = Intent(this, GettingStarted::class.java)
-            startActivity(intent);
+            startActivity(intent)
+            finish()
         }
     }
 }

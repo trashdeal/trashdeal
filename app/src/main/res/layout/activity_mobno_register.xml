@@ -101,15 +101,16 @@
         android:layout_height="40dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:text="We will send you an OTP"
         android:textAlignment="center"
-        android:textColor="#000"
+        android:textColor="#46E0A2"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintVertical_bias="0.475" />
 
     <Button
         android:id="@+id/getOtpBtn"

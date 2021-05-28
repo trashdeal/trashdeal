@@ -66,10 +66,6 @@ class BinsNearMe : AppCompatActivity() {
                     AdapterView.OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
                         val intent = Intent(this, ConnectBin::class.java)
                         intent.putExtra("userBin", binList[position].binName)
-                        intent.putExtra("myLatitude", myLocation.latitude.toString())
-                        intent.putExtra("myLongitude", myLocation.longitude.toString())
-                        intent.putExtra("binLatitude", binLocation.latitude.toString())
-                        intent.putExtra("binLongitude", binLocation.longitude.toString())
                         startActivity(intent)
                     }
             }
