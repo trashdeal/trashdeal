@@ -1,18 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context=".TandC">
-    <Button
-        android:id="@+id/accept"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="59dp"
-        android:layout_marginRight="59dp"
-        android:layout_marginBottom="94dp"
-        android:text="Accept"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="horizontal"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Term of Services"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="#46E0A2"
+                android:textStyle="bold"
+                app:fontFamily="serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="last update May 2021"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                android:textColor="#46E0A2"
+                android:textStyle="italic"
+                app:fontFamily="serif" />
+
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/bt_download"
+            android:layout_width="30dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#46E0A2"
+            app:srcCompat="@drawable/logoimage" />
+        <ImageButton
+            android:id="@+id/bt_close"
+            android:layout_width="30dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#000"
+            app:srcCompat="@drawable/logoimage" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Linear layout to contain 2 text view and button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tandc"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#000"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc2" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc3" />
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tandc4" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc5" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc6" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc7" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tandc8" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc9" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc10" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc11" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc12" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc13" />
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/tandc14" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc15" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc16" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc17" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc18" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc19" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc20" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="#000"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc21" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc22" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc23" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc25" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc26" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#000"
+                android:text="@string/tandc27" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/tandc28" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="20dp">
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp" />
+                <Button
+                    android:id="@+id/accept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Accept"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/green_button"
+                    app:fontFamily="serif" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/decline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_rounded_corners"
+                    android:text="Decline"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="#46E0A2"
+                    app:fontFamily="serif" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
+
+
+
+

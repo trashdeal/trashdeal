@@ -1,12 +1,12 @@
 package com.example.trashdeal
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -26,7 +26,6 @@ class MobnoRegister : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mobno_register)
         auth = FirebaseAuth.getInstance()
-        auth.signOut()
         fStore = FirebaseFirestore.getInstance()
         val phoneNo = findViewById<EditText>(R.id.phone)
         val nextBtn = findViewById<Button>(R.id.getOtpBtn)

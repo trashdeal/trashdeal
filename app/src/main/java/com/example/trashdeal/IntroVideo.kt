@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.MediaController
+import android.widget.TextView
 import android.widget.VideoView
 
 class IntroVideo : AppCompatActivity() {
@@ -14,7 +15,7 @@ class IntroVideo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_video)
         val videoView = findViewById<VideoView>(R.id.videoView)
-        val skipBtn =  findViewById<Button>(R.id.skipBtn)
+        val skipBtn =  findViewById<TextView>(R.id.skipBtn)
         val video = Uri.parse("android.resource://" + packageName + "/" + R.raw.video)
         videoView.setVideoURI(video)
         videoView.setOnCompletionListener(MediaPlayer.OnCompletionListener {
