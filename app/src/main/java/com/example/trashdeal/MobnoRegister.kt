@@ -1,12 +1,16 @@
 package com.example.trashdeal
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -26,18 +30,26 @@ class MobnoRegister : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mobno_register)
         auth = FirebaseAuth.getInstance()
+        auth.signOut()
         fStore = FirebaseFirestore.getInstance()
         val phoneNo = findViewById<EditText>(R.id.phone)
         val nextBtn = findViewById<Button>(R.id.getOtpBtn)
+        val textView1 = findViewById<TextView>(R.id.textView1)
+        @Suppress("DEPRECATION") val color: Int = getResources().getColor(R.color.colorPrimaryDark)
+        val text1 = "We will send you an OTP verification"
+        val s1 = SpannableString(text1)
+        val ssgreen = ForegroundColorSpan(color)
+        s1.setSpan(ssgreen, 0, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        textView1.text=s1
         val ccp = findViewById<CountryCodePicker>(R.id.ccp).selectedCountryCode.toString()
         nextBtn.setOnClickListener {
             val mobNo = "+$ccp${phoneNo.text.toString()}"
             Log.d("TAG", "Mobile No: $mobNo")
-                if(mobNo.isEmpty() || mobNo.length < 10){
-                    Toast.makeText(applicationContext, "Enter Valid Mobile Number", Toast.LENGTH_LONG).show()
-                }else{
-                    sendVerification(mobNo)
-                }
+            if(mobNo.isEmpty() || mobNo.length < 10){
+                Toast.makeText(applicationContext, "Enter Valid Mobile Number", Toast.LENGTH_LONG).show()
+            }else{
+                sendVerification(mobNo)
+            }
         }
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -59,7 +71,7 @@ class MobnoRegister : AppCompatActivity() {
                     putExtra("ccp",ccp)
                     putExtra("otp",storedVerificationId)
                 }
-                startActivity(intent);
+                startActivity(intent)
             }
         }
     }
