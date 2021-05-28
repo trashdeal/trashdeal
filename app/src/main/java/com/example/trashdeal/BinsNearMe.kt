@@ -56,7 +56,7 @@ class BinsNearMe : AppCompatActivity() {
                     Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLocation.latitude, binLocation.longitude ,results)
                     val distance = String.format("%.1f",results[0]/1000)
                     if(distance.toFloat() <= distanceSet){
-                        val currentBin = BinLocation(document.data["Bin Name"].toString(),getCityName(binLocation.latitude, binLocation.longitude),distance)
+                        val currentBin = BinLocation(document.id, document.data["Bin Name"].toString(),getCityName(binLocation.latitude, binLocation.longitude),distance)
                         binList.add(currentBin)
                     }
                 }
@@ -65,7 +65,7 @@ class BinsNearMe : AppCompatActivity() {
                 listview.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
                         val intent = Intent(this, ConnectBin::class.java)
-                        intent.putExtra("userBin", binList[position].binName)
+                        intent.putExtra("userBin", binList[position].binID)
                         startActivity(intent)
                     }
             }

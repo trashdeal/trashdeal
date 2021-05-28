@@ -30,7 +30,6 @@ class MobnoRegister : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mobno_register)
         auth = FirebaseAuth.getInstance()
-        auth.signOut()
         fStore = FirebaseFirestore.getInstance()
         val phoneNo = findViewById<EditText>(R.id.phone)
         val nextBtn = findViewById<Button>(R.id.getOtpBtn)

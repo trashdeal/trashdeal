@@ -79,7 +79,7 @@ class UseBin : AppCompatActivity() {
             Log.i("TAG", "Date ${Calendar.getInstance().time}")
             doc.get().addOnSuccessListener {
                 var userPoints =pointsEarned + it.data?.get("Points").toString().toInt()
-                doc.set(hashMapOf("Points" to userPoints.toInt(),"DefaultBin" to userBin), SetOptions.merge())
+                doc.set(hashMapOf("Points" to userPoints.toInt()), SetOptions.merge())
                 var calendar = Calendar.getInstance()
                 var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
                 var dateTime = simpleDateFormat.format(calendar.time).toString()
