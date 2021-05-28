@@ -1,6 +1,7 @@
 package com.example.trashdeal
 
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -29,20 +30,37 @@ class MainActivity : AppCompatActivity() {
                     binding = ActivityMainBinding.inflate(layoutInflater)
                     setContentView(binding.root)
                     supportActionBar!!.title = "My Dashboard"
-                    toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+                    toggle = ActionBarDrawerToggle(
+                        this,
+                        binding.drawerLayout,
+                        R.string.open,
+                        R.string.close
+                    )
                     binding.drawerLayout.addDrawerListener(toggle)
                     toggle.syncState()
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                     binding.naView
                         .setNavigationItemSelectedListener {
                         when(it.itemId){
-                            R.id.miItem1 ->  startActivity(Intent(this, MainActivity::class.java));
-                            R.id.miItem2 ->  startActivity(Intent(this, MyProfile::class.java));
-                            R.id.miItem4 ->  startActivity(Intent(this, PointsDetails::class.java));
-                            R.id.miItem6 ->  startActivity(Intent(this, TandC2::class.java));
-                            R.id.miItem3 ->  startActivity(Intent(this, Help::class.java));
-                            R.id.miItem7 ->  startActivity(Intent(this, MobnoRegister::class.java));
-                            R.id.miItem8 ->  startActivity(Intent(this, MoreInformation::class.java));
+                            R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java));
+                            R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java));
+                            R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java));
+                            R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java));
+                            R.id.miItem3 -> startActivity(Intent(this, Help::class.java));
+                            R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java));
+                            R.id.miItem7 -> {
+                                    val builder = AlertDialog.Builder(this)
+                                    builder.setTitle("Logout")
+                                    builder.setIcon(R.drawable.logout_icon)
+                                    builder.setMessage("Are you sure you want to Logout?")
+                                    builder.setPositiveButton("YES") { dialog, which ->
+                                        startActivity(Intent(this, MobnoRegister::class.java))
+                                    }
+                                    builder.setNegativeButton(
+                                        "NO"
+                                    ) { dialog, which -> dialog.dismiss() }
+                                    builder.show()
+                            }
                         }
                         true
                     }
