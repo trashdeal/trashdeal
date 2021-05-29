@@ -41,10 +41,11 @@ class MobnoRegister : AppCompatActivity() {
         s1.setSpan(ssgreen, 0, 19, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         textView1.text=s1
         val ccp = findViewById<CountryCodePicker>(R.id.ccp).selectedCountryCode.toString()
+        var mobNo = ""
         nextBtn.setOnClickListener {
-            val mobNo = "+$ccp${phoneNo.text.toString()}"
+            mobNo = "+$ccp ${phoneNo.text.toString()}"
             Log.d("TAG", "Mobile No: $mobNo")
-            if(mobNo.isEmpty() || mobNo.length < 10){
+            if(mobNo.isEmpty() ||phoneNo.text.length != 10){
                 Toast.makeText(applicationContext, "Enter Valid Mobile Number", Toast.LENGTH_LONG).show()
             }else{
                 sendVerification(mobNo)
@@ -66,8 +67,7 @@ class MobnoRegister : AppCompatActivity() {
                 storedVerificationId = verificationId
                 resendToken = token
                 val intent = Intent(applicationContext, OtpRegister::class.java).apply {
-                    putExtra("Phone", phoneNo.text.toString())
-                    putExtra("ccp",ccp)
+                    putExtra("Phone", mobNo)
                     putExtra("otp",storedVerificationId)
                 }
                 startActivity(intent)

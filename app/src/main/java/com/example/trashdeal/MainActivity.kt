@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     builder.setNegativeButton(
                                         "NO"
-                                    ) { dialog, which -> dialog.dismiss() }
+                                    ) { dialog, _ -> dialog.dismiss() }
                                     builder.show()
                             }
                         }
