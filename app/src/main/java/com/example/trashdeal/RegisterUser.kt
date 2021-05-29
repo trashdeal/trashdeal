@@ -30,7 +30,7 @@ class RegisterUser : AppCompatActivity() {
         val text1 = "Enter your credentials"
         val s1 = SpannableString(text1)
         val ssgreen = ForegroundColorSpan(color)
-        s1.setSpan(ssgreen, 0, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s1.setSpan(ssgreen, 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         textspan.text=s1
         val doc:DocumentReference = fStore.collection("user").document(userID)
         val submitBtn = findViewById<Button>(R.id.submit_btn)
