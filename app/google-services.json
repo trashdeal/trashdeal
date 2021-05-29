@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "151393581712",
+    "firebase_url": "https://trashdeal-fc819-default-rtdb.firebaseio.com",
     "project_id": "trashdeal-fc819",
     "storage_bucket": "trashdeal-fc819.appspot.com"
   },
@@ -14,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "151393581712-hb1f7cs314jnj6c1c42h92pehe8sf4et.apps.googleusercontent.com",
+          "client_id": "151393581712-akci701566g5e4hfghkno9s926h7vtjf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.trashdeal",
