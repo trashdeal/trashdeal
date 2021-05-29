@@ -34,6 +34,12 @@ class OtpRegister : AppCompatActivity() {
                 PhoneAuthProvider.getCredential(storedVerificationId, otp)
             verifyAuth(credential)
         }
+
+        val resendBtn = findViewById<Button>(R.id.resendBtn)
+        resendBtn.setOnClickListener{
+
+        }
+
     }
 
     private fun verifyAuth(credential: PhoneAuthCredential) {

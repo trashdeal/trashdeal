@@ -36,9 +36,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MobnoRegister"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".OtpRegister"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".RegisterUser"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".TandC"
