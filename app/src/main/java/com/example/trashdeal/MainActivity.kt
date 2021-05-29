@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                                     builder.setPositiveButton("YES") { dialog, which ->
                                         auth.signOut()
                                         startActivity(Intent(this, MobnoRegister::class.java))
+                                        finish()
                                     }
                                     builder.setNegativeButton(
                                         "NO"

@@ -88,6 +88,7 @@ class ConnectBin : AppCompatActivity() {
                             otpInp = input.text.toString()
                             if (otpInp == "" || OTP != otpInp.toInt()) {
                                 ref.child("PlasticBin").child("Status").setValue("end")
+                                ref.child("PlasticBin").child("OTP").setValue(1111)
                                 Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
                                     .show()
                             } else {
