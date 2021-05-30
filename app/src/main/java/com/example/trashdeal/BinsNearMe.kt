@@ -205,7 +205,7 @@ class BinsNearMe : AppCompatActivity() {
 
         cityName = Adress.get(0).locality
         countryName = Adress.get(0).countryName
-        Log.d("Debug:","Your City: " + cityName + " ; your Country " + countryName)
+        Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
         return cityName+","+countryName
     }
 }

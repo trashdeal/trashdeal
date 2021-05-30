@@ -66,50 +66,52 @@ class ConnectBin : AppCompatActivity() {
                 startActivity(intent)
             }
             plasticBtn.setOnClickListener{
-                if (plastic_bin.Status == "start") {
-                    Toast.makeText(applicationContext, "Sorry! Bin is in Use", Toast.LENGTH_SHORT).show()
-                }
-                else if (plastic_bin.WasteLevel >= 90) {
-                    Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    ref.child("PlasticBin").child("Status").setValue("start")
-                    var OTP = (Math.random() * (99999 - 10000 + 1) + 10000).toInt()
-                    ref.child("PlasticBin").child("OTP").setValue(OTP)
-                    var otpInp = ""
-                    val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-                    builder.setTitle("Enter OTP displayed on the bin")
-                    val input = EditText(this)
-                    input.inputType =
-                        InputType.TYPE_CLASS_NUMBER
-                    builder.setView(input)
-                    builder.setPositiveButton("Verify",
-                        DialogInterface.OnClickListener { dialog, which ->
-                            otpInp = input.text.toString()
-                            if (otpInp == "" || OTP != otpInp.toInt()) {
+                when {
+                    plastic_bin.Status == "start" -> {
+                        Toast.makeText(applicationContext, "Sorry! Bin is in Use", Toast.LENGTH_SHORT).show()
+                    }
+                    plastic_bin.WasteLevel >= 90 -> {
+                        Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        ref.child("PlasticBin").child("Status").setValue("start")
+                        var OTP = (Math.random() * (99999 - 10000 + 1) + 10000).toInt()
+                        ref.child("PlasticBin").child("OTP").setValue(OTP)
+                        var otpInp = ""
+                        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                        builder.setTitle("Enter OTP displayed on the bin")
+                        val input = EditText(this)
+                        input.inputType =
+                            InputType.TYPE_CLASS_NUMBER
+                        builder.setView(input)
+                        builder.setPositiveButton("Verify",
+                            DialogInterface.OnClickListener { dialog, which ->
+                                otpInp = input.text.toString()
+                                if (otpInp == "" || OTP != otpInp.toInt()) {
+                                    ref.child("PlasticBin").child("Status").setValue("end")
+                                    ref.child("PlasticBin").child("OTP").setValue(1111)
+                                    Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
+                                        .show()
+                                } else {
+                                    val doc1: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+                                    doc1.set(hashMapOf("DefaultBin" to userBinId), SetOptions.merge())
+                                    startActivity(Intent(applicationContext, UseBin::class.java).apply {
+                                        putExtra("userBin", userBin)
+                                        putExtra("binType", "PlasticBin")
+                                        putExtra("wasteType", "Plastic")
+                                    })
+                                }
+                            })
+                        builder.setNegativeButton("Cancel",
+                            DialogInterface.OnClickListener { dialog, _ ->
+                                dialog.cancel()
                                 ref.child("PlasticBin").child("Status").setValue("end")
-                                ref.child("PlasticBin").child("OTP").setValue(1111)
-                                Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
-                                    .show()
-                            } else {
-                                val doc1: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
-                                doc1.set(hashMapOf("DefaultBin" to userBinId), SetOptions.merge())
-                                startActivity(Intent(applicationContext, UseBin::class.java).apply {
-                                    putExtra("userBin", userBin)
-                                    putExtra("binType", "PlasticBin")
-                                    putExtra("wasteType", "Plastic")
-                                })
-                            }
+                            })
+                        builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
+                            keyCode == KeyEvent.KEYCODE_BACK
                         })
-                    builder.setNegativeButton("Cancel",
-                        DialogInterface.OnClickListener { dialog, _ ->
-                            dialog.cancel()
-                            ref.child("PlasticBin").child("Status").setValue("end")
-                        })
-                    builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
-                        keyCode == KeyEvent.KEYCODE_BACK
-                    })
-                    builder.show()
+                        builder.show()
+                    }
                 }
             }
             ewasteBtn.setOnClickListener{

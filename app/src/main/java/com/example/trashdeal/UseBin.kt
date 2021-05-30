@@ -76,22 +76,24 @@ class UseBin : AppCompatActivity() {
             Log.i("TAG", "Got new value ${it.value}")
             newWeight = it.value.toString().toDouble()
             userWeight = newWeight - oldWeight
-            var pointsEarned = userWeight*10
+            var pointsEarned = (userWeight*10).toInt()
             Log.i("TAG", "Date ${Calendar.getInstance().time}")
-            doc.get().addOnSuccessListener {
-                var userPoints =pointsEarned + it.data?.get("Points").toString().toInt()
-                doc.set(hashMapOf("Points" to userPoints.toInt()), SetOptions.merge())
-                var calendar = Calendar.getInstance()
-                var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
-                var dateTime = simpleDateFormat.format(calendar.time).toString()
-                var userTransaction = hashMapOf(
-                    "Date" to dateTime,
-                    "PointsEarned" to pointsEarned,
-                    "WasteType" to waste_type,
-                    "Bin" to userBin,
-                    "WasteWeight" to userWeight
-                )
-                doc.collection("transactions").add(userTransaction)
+            if(pointsEarned!= 0) {
+                doc.get().addOnSuccessListener {
+                    var userPoints = pointsEarned + it.data?.get("Points").toString().toInt()
+                    doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
+                    var calendar = Calendar.getInstance()
+                    var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
+                    var dateTime = simpleDateFormat.format(calendar.time).toString()
+                    var userTransaction = hashMapOf(
+                        "Date" to dateTime,
+                        "PointsEarned" to pointsEarned,
+                        "WasteType" to waste_type,
+                        "Bin" to userBin,
+                        "WasteWeight" to userWeight
+                    )
+                    doc.collection("transactions").add(userTransaction)
+                }
             }
         }.addOnFailureListener{
             Log.e("TAG", "Error getting data", it)

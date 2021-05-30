@@ -24,76 +24,81 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
         if(auth.currentUser != null) {
-            val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
-            doc.get().addOnSuccessListener {
-                if(it.exists()){
-                    binding = ActivityMainBinding.inflate(layoutInflater)
-                    setContentView(binding.root)
-                    supportActionBar!!.title = "My Dashboard"
-                    toggle = ActionBarDrawerToggle(
-                        this,
-                        binding.drawerLayout,
-                        R.string.open,
-                        R.string.close
-                    )
-                    binding.drawerLayout.addDrawerListener(toggle)
-                    toggle.syncState()
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                    binding.naView
-                        .setNavigationItemSelectedListener {
-                        when(it.itemId){
-                            R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
-                            R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
-                            R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
-                            R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
-                            R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
-                            R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
-                            R.id.miItem7 -> {
-                                    val builder = AlertDialog.Builder(this)
-                                    builder.setTitle("Logout")
-                                    builder.setIcon(R.drawable.logout_icon)
-                                    builder.setMessage("Are you sure you want to Logout?")
-                                    builder.setPositiveButton("YES") { dialog, which ->
-                                        auth.signOut()
-                                        startActivity(Intent(this, MobnoRegister::class.java))
-                                        finish()
+            if(auth.currentUser.phoneNumber == "+911111111111"){
+                startActivity(Intent(applicationContext, adminHome::class.java))
+                finish()
+            }else{
+                val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+                doc.get().addOnSuccessListener {
+                    if(it.exists()){
+                        binding = ActivityMainBinding.inflate(layoutInflater)
+                        setContentView(binding.root)
+                        supportActionBar!!.title = "My Dashboard"
+                        toggle = ActionBarDrawerToggle(
+                            this,
+                            binding.drawerLayout,
+                            R.string.open,
+                            R.string.close
+                        )
+                        binding.drawerLayout.addDrawerListener(toggle)
+                        toggle.syncState()
+                        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                        binding.naView
+                            .setNavigationItemSelectedListener {
+                                when(it.itemId){
+                                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
+                                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
+                                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
+                                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
+                                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
+                                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
+                                    R.id.miItem7 -> {
+                                        val builder = AlertDialog.Builder(this)
+                                        builder.setTitle("Logout")
+                                        builder.setIcon(R.drawable.logout_icon)
+                                        builder.setMessage("Are you sure you want to Logout?")
+                                        builder.setPositiveButton("YES") { dialog, which ->
+                                            auth.signOut()
+                                            startActivity(Intent(this, MobnoRegister::class.java))
+                                            finish()
+                                        }
+                                        builder.setNegativeButton(
+                                            "NO"
+                                        ) { dialog, _ -> dialog.dismiss() }
+                                        builder.show()
                                     }
-                                    builder.setNegativeButton(
-                                        "NO"
-                                    ) { dialog, _ -> dialog.dismiss() }
-                                    builder.show()
+                                }
+                                true
+                            }
+                        val useBin = findViewById<Button>(R.id.buttonbin)
+                        val points = findViewById<TextView>(R.id.points)
+                        val pointsBtn = findViewById<Button>(R.id.buttonscore)
+                        val trashHistory = findViewById<Button>(R.id.buttonhistory)
+                        val binNearMeBtn = findViewById<Button>(R.id.buttonbinsnear)
+                        doc.get().addOnSuccessListener { points.text = it.data?.get("Points").toString() }
+                        val user = it.data
+                        useBin.setOnClickListener{
+                            if(!user?.get("DefaultBin")?.equals("")!!){
+                                startActivity(Intent(applicationContext, ConnectBin::class.java).apply {
+                                    putExtra("userBin", user?.get("DefaultBin").toString())
+                                })
+                            }else{
+                                startActivity(Intent(applicationContext, BinsNearMe::class.java))
                             }
                         }
-                        true
-                    }
-                    val useBin = findViewById<Button>(R.id.buttonbin)
-                    val points = findViewById<TextView>(R.id.points)
-                    val pointsBtn = findViewById<Button>(R.id.buttonscore)
-                    val trashHistory = findViewById<Button>(R.id.buttonhistory)
-                    val binNearMeBtn = findViewById<Button>(R.id.buttonbinsnear)
-                    doc.get().addOnSuccessListener { points.text = it.data?.get("Points").toString() }
-                    val user = it.data
-                    useBin.setOnClickListener{
-                        if(!user?.get("DefaultBin")?.equals("")!!){
-                            startActivity(Intent(applicationContext, ConnectBin::class.java).apply {
-                                putExtra("userBin", user?.get("DefaultBin").toString())
-                            })
-                        }else{
+                        pointsBtn.setOnClickListener{
+                            startActivity(Intent(applicationContext, PointsRedeem::class.java))
+                        }
+                        trashHistory.setOnClickListener{
+                            startActivity(Intent(applicationContext, UserTransactions::class.java))
+                        }
+                        binNearMeBtn.setOnClickListener{
                             startActivity(Intent(applicationContext, BinsNearMe::class.java))
                         }
+                    }else {
+                        startActivity(Intent(applicationContext, RegisterUser::class.java))
+                        finish()
                     }
-                    pointsBtn.setOnClickListener{
-                        startActivity(Intent(applicationContext, PointsRedeem::class.java))
-                    }
-                    trashHistory.setOnClickListener{
-                        startActivity(Intent(applicationContext, UserTransactions::class.java))
-                    }
-                    binNearMeBtn.setOnClickListener{
-                        startActivity(Intent(applicationContext, BinsNearMe::class.java))
-                    }
-                }else {
-                    startActivity(Intent(applicationContext, RegisterUser::class.java))
-                    finish()
                 }
             }
         }else{

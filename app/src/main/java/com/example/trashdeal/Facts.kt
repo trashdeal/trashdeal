@@ -31,12 +31,12 @@ class Facts : AppCompatActivity() {
             }else if(fact.length in 91..200){
                 time = 7000
             }
+            @Suppress("DEPRECATION")
+            Handler().postDelayed({
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent) //start new activity here
+                finish()
+            }, time)
         }
-        @Suppress("DEPRECATION")
-        Handler().postDelayed({
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent) //start new activity here
-            finish()
-        }, time)
     }
 }

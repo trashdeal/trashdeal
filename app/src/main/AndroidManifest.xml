@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.trashdeal">
+    package="com.example.trashdeal" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,40 +15,52 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".PointsRedeem"></activity>
+        tools:targetApi="m" >
+        <activity android:name=".adminHome" >
+        </activity>
+        <activity android:name=".PointsRedeem" />
         <activity android:name=".MoreInformation" />
         <activity android:name=".Help" />
         <activity android:name=".TandC2" />
         <activity android:name=".PointsDetails" />
         <activity android:name=".MyProfile" />
         <activity android:name=".UserTransactions" />
-        <activity android:name=".BinsNearMe" android:theme="@style/AppTheme.NoActionBar." />
+        <activity
+            android:name=".BinsNearMe"
+            android:theme="@style/AppTheme.NoActionBar." />
         <activity android:name=".ConnectBin" />
         <activity android:name=".Facts" />
         <activity android:name=".UseBin" />
-        <activity android:name=".IntroVideo" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".SplashScreen" android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".IntroVideo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MobnoRegister"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".OtpRegister"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterUser"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".TandC"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".GettingStarted"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".MainActivity"
-            />
+        <activity
+            android:name=".MobnoRegister"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OtpRegister"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterUser"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TandC"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GettingStarted"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
