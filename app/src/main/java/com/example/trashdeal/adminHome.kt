@@ -22,7 +22,7 @@ class adminHome : AppCompatActivity() {
             builder.setTitle("Logout")
             builder.setIcon(R.drawable.logout_icon)
             builder.setMessage("Are you sure you want to Logout?")
-            builder.setPositiveButton("YES") { dialog, which ->
+            builder.setPositiveButton("YES") { _, _ ->
                 auth.signOut()
                 startActivity(Intent(this, MobnoRegister::class.java))
                 finish()

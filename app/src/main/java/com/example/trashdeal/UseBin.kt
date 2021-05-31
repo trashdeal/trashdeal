@@ -2,6 +2,7 @@ package com.example.trashdeal
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -19,6 +20,8 @@ class UseBin : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private var oldWeight = 0.0
+    var handler: Handler? = null
+    var r: Runnable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_use_bin)
@@ -39,21 +42,42 @@ class UseBin : AppCompatActivity() {
             Log.e("TAG", "Error getting data", it)
         }
         openBtn.setOnClickListener{
-            Toast.makeText(applicationContext,"Opening Bin Lid..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
             ref.child("BinLid").setValue("open")
         }
         closeBtn.setOnClickListener{
-            Toast.makeText(applicationContext,"Closing Bin Lid..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Closing Bin Lid..", Toast.LENGTH_SHORT).show()
             ref.child("BinLid").setValue("close")
         }
         disconnectBtn.setOnClickListener{
-            Toast.makeText(applicationContext,"Disconnected..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Disconnected..", Toast.LENGTH_SHORT).show()
             terminateBinProcess()
             startActivity(Intent(applicationContext, Facts::class.java))
             finish()
         }
+        @Suppress("DEPRECATION")
+        handler = Handler()
+        r = Runnable { // TODO Auto-generated method stub
+            terminateBinProcess()
+            startActivity(Intent(applicationContext, Facts::class.java))
+            finish()
+        }
+        startHandler()
+    }
+    override fun onUserInteraction() {
+        // TODO Auto-generated method stub
+        super.onUserInteraction()
+        stopHandler() //stop first and then start
+        startHandler()
     }
 
+    private fun stopHandler() {
+        r?.let { handler?.removeCallbacks(it) }
+    }
+
+    private fun startHandler() {
+        r?.let { handler?.postDelayed(it, 30 * 1000) } //for 30 secs
+    }
     override fun onBackPressed() {
         super.onBackPressed()
         terminateBinProcess()
@@ -62,8 +86,8 @@ class UseBin : AppCompatActivity() {
     }
 
     private fun terminateBinProcess(){
-        var newWeight = 0.0
-        var userWeight = 0.0
+        var newWeight: Double
+        var userWeight: Double
         val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
         var userBin = intent.getStringExtra("userBin").toString()
         var bin_type = intent.getStringExtra("binType").toString()
