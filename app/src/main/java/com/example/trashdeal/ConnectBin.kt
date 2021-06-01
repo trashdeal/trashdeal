@@ -9,10 +9,12 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.KeyEvent
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.trashdeal.databinding.ActivityConnectBinBinding
+import com.example.trashdeal.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,12 +25,80 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
 
+@Suppress("UNREACHABLE_CODE")
 class ConnectBin : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    lateinit var binding: ActivityConnectBinBinding
+    lateinit var toggle: ActionBarDrawerToggle
+    val dropDownList = arrayOf("None","English","Hindi","Konkani")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_connect_bin)
+        binding = ActivityConnectBinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar!!.title = "My Bin"
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            R.string.open,
+            R.string.close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.naView
+            .setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
+                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
+                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
+                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
+                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
+                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
+                    R.id.miItem7 -> {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Logout")
+                        builder.setIcon(R.drawable.logout_icon)
+                        builder.setMessage("Are you sure you want to Logout?")
+                        builder.setPositiveButton("YES") { dialog, which ->
+                            auth.signOut()
+                            startActivity(Intent(this, MobnoRegister::class.java))
+                            finish()
+                        }
+                        builder.setNegativeButton(
+                            "NO"
+                        ) { dialog, _ -> dialog.dismiss() }
+                        builder.show()
+                    }
+                }
+                true
+            }
+
+        val adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = adapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(parent: AdapterView<*>?,view: View?,position: Int,id: Long ) {
+                if(binding.spinner.selectedItemPosition==0){
+                    condition0()
+                }
+                if(binding.spinner.selectedItemPosition==1){
+                    condition1()
+                }
+                if(binding.spinner.selectedItemPosition==2){
+                    condition2()
+                }
+                if(binding.spinner.selectedItemPosition==3){
+                    condition3()
+                }
+            }
+
+            }
+
+
         auth = FirebaseAuth.getInstance()
         val plasticBtn = findViewById<Button>(R.id.plasticBtn)
         val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
@@ -124,5 +194,17 @@ class ConnectBin : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun condition0() {
+        Toast.makeText(this, "No language is selected ", Toast.LENGTH_LONG).show()
+    }
+    private fun condition1() {
+        Toast.makeText(this, "Selected language is " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
+    }
+    private fun condition2() {
+        Toast.makeText(this, "चयनित भाषा हिंदी है (" + binding.spinner.selectedItem + ")", Toast.LENGTH_LONG).show()
+    }
+    private fun condition3() {
+        Toast.makeText(this, "चयनित भाषा कोंकणी है (" + binding.spinner.selectedItem + ")", Toast.LENGTH_LONG).show()
     }
 }
