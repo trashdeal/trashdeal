@@ -2,7 +2,6 @@ package com.example.trashdeal
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -20,8 +19,7 @@ class UseBin : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private var oldWeight = 0.0
-    var handler: Handler? = null
-    var r: Runnable? = null
+    var timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_use_bin)
@@ -55,28 +53,28 @@ class UseBin : AppCompatActivity() {
             startActivity(Intent(applicationContext, Facts::class.java))
             finish()
         }
-        @Suppress("DEPRECATION")
-        handler = Handler()
-        r = Runnable { // TODO Auto-generated method stub
-            terminateBinProcess()
-            startActivity(Intent(applicationContext, Facts::class.java))
-            finish()
-        }
-        startHandler()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                terminateBinProcess()
+                startActivity(Intent(applicationContext, Facts::class.java))
+                finish()
+                timer.cancel() //this will cancel the timer of the system
+            }
+        }, 15 * 1000)
     }
     override fun onUserInteraction() {
         // TODO Auto-generated method stub
         super.onUserInteraction()
-        stopHandler() //stop first and then start
-        startHandler()
-    }
-
-    private fun stopHandler() {
-        r?.let { handler?.removeCallbacks(it) }
-    }
-
-    private fun startHandler() {
-        r?.let { handler?.postDelayed(it, 30 * 1000) } //for 30 secs
+        timer.cancel()
+        timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                terminateBinProcess()
+                startActivity(Intent(applicationContext, Facts::class.java))
+                finish()
+                timer.cancel() //this will cancel the timer of the system
+            }
+        }, 15 * 1000)
     }
     override fun onBackPressed() {
         super.onBackPressed()

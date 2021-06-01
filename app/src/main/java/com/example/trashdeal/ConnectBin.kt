@@ -1,6 +1,5 @@
 package com.example.trashdeal
 
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
@@ -21,6 +20,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import java.util.*
 
 
 class ConnectBin : AppCompatActivity() {
@@ -44,7 +44,7 @@ class ConnectBin : AppCompatActivity() {
             userBin = it.get("Bin Name").toString()
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
-            var plastic_bin = Bin("",0.0,0,0,"","")
+            var plastic_bin = Bin("", 0.0, 0, 0, "", "")
             val ref = FirebaseDatabase.getInstance().getReference(userBin)
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -60,7 +60,7 @@ class ConnectBin : AppCompatActivity() {
             getDirectionBtn.setOnClickListener{
                 val mapsLink = "https://www.google.co.in/maps/dir//${binLocation.latitude},${binLocation.longitude}"
                 val uri: Uri? = Uri.parse(mapsLink)
-                val intent = Intent(Intent.ACTION_VIEW,uri)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
                 intent.setPackage("com.google.android.apps.maps")
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
@@ -68,17 +68,23 @@ class ConnectBin : AppCompatActivity() {
             plasticBtn.setOnClickListener{
                 when {
                     plastic_bin.Status == "start" -> {
-                        Toast.makeText(applicationContext, "Sorry! Bin is in Use", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            applicationContext,
+                            "Sorry! Bin is in Use",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     plastic_bin.WasteLevel >= 90 -> {
                         Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
+                        val timer = Timer()
                         ref.child("PlasticBin").child("Status").setValue("start")
                         var OTP = (Math.random() * (99999 - 10000 + 1) + 10000).toInt()
                         ref.child("PlasticBin").child("OTP").setValue(OTP)
                         var otpInp = ""
-                        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                        val builder: android.app.AlertDialog.Builder =
+                            android.app.AlertDialog.Builder(this)
                         builder.setTitle("Enter OTP displayed on the bin")
                         val input = EditText(this)
                         input.inputType =
@@ -86,9 +92,9 @@ class ConnectBin : AppCompatActivity() {
                         builder.setView(input)
                         builder.setPositiveButton("Verify",
                             DialogInterface.OnClickListener { dialog, which ->
+                                timer.cancel()
                                 otpInp = input.text.toString()
                                 if (otpInp == "" || OTP != otpInp.toInt()) {
-                                    ref.child("PlasticBin").child("Status").setValue("end")
                                     ref.child("PlasticBin").child("OTP").setValue(1111)
                                     Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
                                         .show()
@@ -104,13 +110,25 @@ class ConnectBin : AppCompatActivity() {
                             })
                         builder.setNegativeButton("Cancel",
                             DialogInterface.OnClickListener { dialog, _ ->
+                                timer.cancel()
                                 dialog.cancel()
                                 ref.child("PlasticBin").child("Status").setValue("end")
+                                ref.child("PlasticBin").child("OTP").setValue(0)
                             })
                         builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
                             keyCode == KeyEvent.KEYCODE_BACK
                         })
-                        builder.show()
+                        val dialog: android.app.AlertDialog? = builder.create()
+                        dialog?.show()
+                        dialog?.setCancelable(false)
+                        timer.schedule(object : TimerTask() {
+                            override fun run() {
+                                ref.child("PlasticBin").child("Status").setValue("end")
+                                ref.child("PlasticBin").child("OTP").setValue(0)
+                                dialog?.dismiss()
+                                timer.cancel() //this will cancel the timer of the system
+                            }
+                        }, 30 * 1000)
                     }
                 }
             }
