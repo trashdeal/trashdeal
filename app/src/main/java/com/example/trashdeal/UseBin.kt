@@ -23,6 +23,7 @@ class UseBin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_use_bin)
+        startTimer()
         val openBtn = findViewById<Button>(R.id.openBtn)
         val closeBtn = findViewById<Button>(R.id.closeBtn)
         val disconnectBtn = findViewById<Button>(R.id.disconnectBtn)
@@ -40,29 +41,24 @@ class UseBin : AppCompatActivity() {
             Log.e("TAG", "Error getting data", it)
         }
         openBtn.setOnClickListener{
+            startTimer()
             Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
             ref.child("BinLid").setValue("open")
         }
         closeBtn.setOnClickListener{
+            startTimer()
             Toast.makeText(applicationContext, "Closing Bin Lid..", Toast.LENGTH_SHORT).show()
             ref.child("BinLid").setValue("close")
         }
         disconnectBtn.setOnClickListener{
             Toast.makeText(applicationContext, "Disconnected..", Toast.LENGTH_SHORT).show()
             terminateBinProcess()
+            timer.cancel()
             startActivity(Intent(applicationContext, Facts::class.java))
             finish()
         }
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                terminateBinProcess()
-                startActivity(Intent(applicationContext, Facts::class.java))
-                finish()
-                timer.cancel() //this will cancel the timer of the system
-            }
-        }, 15 * 1000)
     }
-    override fun onUserInteraction() {
+    private fun startTimer() {
         // TODO Auto-generated method stub
         super.onUserInteraction()
         timer.cancel()
