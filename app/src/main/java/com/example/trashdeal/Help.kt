@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityHelpBinding
-import com.example.trashdeal.databinding.ActivityMainBinding
 
 class Help : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
