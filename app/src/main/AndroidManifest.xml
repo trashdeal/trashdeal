@@ -28,9 +28,9 @@
         <activity
             android:name=".BinsNearMe"
             android:theme="@style/AppTheme.NoActionBar." />
-        <activity android:name=".ConnectBin" />
+        <activity android:name=".ConnectBin" android:screenOrientation="portrait" />
         <activity android:name=".Facts" />
-        <activity android:name=".UseBin" />
+        <activity android:name=".UseBin" android:screenOrientation="portrait" />
         <activity
             android:name=".IntroVideo"
             android:theme="@style/AppTheme.NoActionBar" />

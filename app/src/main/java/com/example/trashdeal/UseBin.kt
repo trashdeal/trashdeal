@@ -1,11 +1,12 @@
 package com.example.trashdeal
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -24,9 +25,7 @@ class UseBin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_use_bin)
         startTimer()
-        val openBtn = findViewById<Button>(R.id.openBtn)
-        val closeBtn = findViewById<Button>(R.id.closeBtn)
-        val disconnectBtn = findViewById<Button>(R.id.disconnectBtn)
+        val binControlBtn = findViewById<ToggleButton>(R.id.binControl)
         val binNameView = findViewById<TextView>(R.id.binName)
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
@@ -40,22 +39,31 @@ class UseBin : AppCompatActivity() {
         }.addOnFailureListener{
             Log.e("TAG", "Error getting data", it)
         }
-        openBtn.setOnClickListener{
-            startTimer()
-            Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
-            ref.child("BinLid").setValue("open")
-        }
-        closeBtn.setOnClickListener{
-            startTimer()
-            Toast.makeText(applicationContext, "Closing Bin Lid..", Toast.LENGTH_SHORT).show()
-            ref.child("BinLid").setValue("close")
-        }
-        disconnectBtn.setOnClickListener{
-            Toast.makeText(applicationContext, "Disconnected..", Toast.LENGTH_SHORT).show()
-            terminateBinProcess()
-            timer.cancel()
-            startActivity(Intent(applicationContext, Facts::class.java))
-            finish()
+        binControlBtn.setOnClickListener{it
+            if(binControlBtn.isChecked){
+                startTimer()
+                Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
+                ref.child("BinLid").setValue("open")
+            }else{
+                val builder = AlertDialog.Builder(this)
+                builder.setCancelable(false)
+                builder.setTitle("Confirm")
+                builder.setIcon(R.drawable.logout_icon)
+                builder.setMessage("Close bin and disconnect..")
+                builder.setPositiveButton("YES") { dialog, which ->
+                    terminateBinProcess()
+                    timer.cancel()
+                    startActivity(Intent(applicationContext, Facts::class.java))
+                    finish()
+                    Toast.makeText(applicationContext, "Closing Bin Lid..", Toast.LENGTH_SHORT).show()
+                }
+                builder.setNegativeButton("NO"){ dialog, _ ->
+                    startTimer()
+                    binControlBtn.isChecked = true
+                    dialog.dismiss()
+                }
+                builder.show()
+            }
         }
     }
     private fun startTimer() {

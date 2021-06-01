@@ -6,48 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".UseBin">
 
-    <Button
-        android:id="@+id/openBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:text="OPEN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/closeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:text="CLOSE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-    <Button
-        android:id="@+id/disconnectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DISCONNECT FROM BIN"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
 
     <TextView
         android:id="@+id/binName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="91dp"
+        android:layout_marginBottom="101dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/binControl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/binControl"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="435dp"
+        android:textOff="OPEN BIN"
+        android:textOn="CLOSE BIN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/binName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
