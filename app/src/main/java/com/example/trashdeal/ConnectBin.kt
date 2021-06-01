@@ -80,10 +80,10 @@ class ConnectBin : AppCompatActivity() {
         binding.spinner.adapter = adapter
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
+                conditionNull()
             }
             override fun onItemSelected(parent: AdapterView<*>?,view: View?,position: Int,id: Long ) {
                 if(binding.spinner.selectedItemPosition==0){
-                    condition0()
                 }
                 if(binding.spinner.selectedItemPosition==1){
                     condition1()
@@ -214,8 +214,8 @@ class ConnectBin : AppCompatActivity() {
             }
         }
     }
-    private fun condition0() {
-        Toast.makeText(this, "No language is selected ", Toast.LENGTH_LONG).show()
+    private fun conditionNull() {
+        Toast.makeText(this, "Nothing selected please select an option", Toast.LENGTH_LONG).show()
     }
     private fun condition1() {
         Toast.makeText(this, "Selected language is " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
