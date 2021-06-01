@@ -70,7 +70,7 @@ class UseBin : AppCompatActivity() {
                 finish()
                 timer.cancel() //this will cancel the timer of the system
             }
-        }, 60 * 1000)
+        }, 30 * 1000)
     }
     override fun onBackPressed() {
         super.onBackPressed()

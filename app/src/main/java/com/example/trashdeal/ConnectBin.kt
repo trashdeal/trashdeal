@@ -1,5 +1,6 @@
 package com.example.trashdeal
 
+import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
@@ -13,7 +14,6 @@ import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityConnectBinBinding
-import com.example.trashdeal.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
