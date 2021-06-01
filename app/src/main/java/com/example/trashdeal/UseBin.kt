@@ -70,7 +70,7 @@ class UseBin : AppCompatActivity() {
                 finish()
                 timer.cancel() //this will cancel the timer of the system
             }
-        }, 15 * 1000)
+        }, 60 * 1000)
     }
     override fun onBackPressed() {
         super.onBackPressed()
@@ -78,7 +78,6 @@ class UseBin : AppCompatActivity() {
         startActivity(Intent(applicationContext, MainActivity::class.java))
         finish()
     }
-
     private fun terminateBinProcess(){
         var newWeight: Double
         var userWeight: Double
