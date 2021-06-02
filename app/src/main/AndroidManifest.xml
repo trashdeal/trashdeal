@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.trashdeal" >
+    package="com.example.trashdeal">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m" >
-        <activity android:name=".adminHome" >
-        </activity>
+        tools:targetApi="m">
+        <activity android:name=".EditPoints"></activity>
+        <activity android:name=".adminHome"></activity>
         <activity android:name=".PointsRedeem" />
         <activity android:name=".MoreInformation" />
         <activity android:name=".Help" />
@@ -28,15 +28,19 @@
         <activity
             android:name=".BinsNearMe"
             android:theme="@style/AppTheme.NoActionBar." />
-        <activity android:name=".ConnectBin" android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConnectBin"
+            android:screenOrientation="portrait" />
         <activity android:name=".Facts" />
-        <activity android:name=".UseBin" android:screenOrientation="portrait" />
+        <activity
+            android:name=".UseBin"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".IntroVideo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

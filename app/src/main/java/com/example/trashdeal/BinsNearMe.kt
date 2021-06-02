@@ -25,7 +25,6 @@ import java.util.*
 
 class BinsNearMe : AppCompatActivity() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    lateinit var locationRequest: LocationRequest
     private var PERMISSION_ID = 1000
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
