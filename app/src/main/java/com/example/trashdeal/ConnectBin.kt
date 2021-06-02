@@ -97,8 +97,6 @@ class ConnectBin : AppCompatActivity() {
             }
 
             }
-
-
         auth = FirebaseAuth.getInstance()
         val plasticBtn = findViewById<Button>(R.id.plasticBtn)
         val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
