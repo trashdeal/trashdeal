@@ -6,31 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConnectBin"
+    android:background="#fff"
     android:id="@+id/drawerLayout">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/txtcol1"
-        android:layout_width="222dp"
-        android:layout_height="66dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:text="Click here to get directions to the nearest bin"
+        android:id="@+id/txtcol2"
+        android:layout_width="261dp"
+        android:layout_height="93dp"
+        android:gravity="center"
+        android:text="Click below to select the language for smart bin voice instructions"
         android:textColor="#000"
-        android:textSize="17dp"
-        android:textStyle="bold"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
-
-    <!-- static -->
-
+        app:layout_constraintVertical_bias="0.296" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -40,38 +36,57 @@
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.378" />
 
     <TextView
-        android:id="@+id/txtcol2"
-        android:layout_width="222dp"
-        android:layout_height="90dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:text="Click here to select language you prefer for smart bin instructions"
+        android:id="@+id/welcometext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Welcome to"
         android:textColor="#000"
-        android:textSize="17dp"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <TextView
+        android:id="@+id/testbin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="{test bin}"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/welcometext"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.067" />
 
     <Button
         android:id="@+id/getDirectionBtn"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
-        android:text="GET DIRECTION"
         android:background="@drawable/button_bg_rounded_corners"
+        android:text="GET DIRECTIONs to bin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -83,11 +98,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79">
+        app:layout_constraintVertical_bias="0.89">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="135dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -102,14 +119,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#cdf7ff">
+                    android:background="@drawable/button_bg_rounded_corners">
 
                     <ImageView
                         android:id="@+id/pbinicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/trial" />
+                        android:src="@drawable/binfull" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -127,9 +144,6 @@
                         android:id="@+id/plasticBtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
-
-
                         android:background="@android:color/transparent"></Button>
                 </RelativeLayout>
 
@@ -145,14 +159,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#e6e6fa">
+                    android:background="@drawable/button_bg_rounded_corners">
 
                     <ImageView
                         android:id="@+id/ewasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/trial" />
+                        android:src="@drawable/binalmostfull" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,6 +194,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="135dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -194,14 +210,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#e6e6fa">
+                    android:background="@drawable/button_bg_rounded_corners">
 
                     <ImageView
                         android:id="@+id/wetwasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/trial" />
+                        android:src="@drawable/binalmostlow" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -233,14 +249,14 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#cdf7ff">
+                    android:background="@drawable/button_bg_rounded_corners">
 
                     <ImageView
                         android:id="@+id/drywasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/trial" />
+                        android:src="@drawable/binempty" />
 
                     <TextView
                         android:layout_width="wrap_content"
