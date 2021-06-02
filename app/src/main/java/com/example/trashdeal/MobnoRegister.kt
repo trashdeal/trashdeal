@@ -6,10 +6,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -73,6 +70,11 @@ class MobnoRegister : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+        val backBtn = findViewById<ImageView>(R.id.back_btn2)
+        backBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, TandC::class.java))
+            finish()
         }
     }
     private fun sendVerification(mobNo: String) {

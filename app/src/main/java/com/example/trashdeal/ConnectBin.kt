@@ -199,7 +199,7 @@ class ConnectBin : AppCompatActivity() {
                                 dialog?.dismiss()
                                 timer.cancel() //this will cancel the timer of the system
                             }
-                        }, 30 * 1000)
+                        }, 120 * 1000) //120 seconds delay
                     }
                 }
             }

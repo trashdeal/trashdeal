@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MobnoRegister">
     <ImageView
-        android:id="@+id/back_btn"
+        android:id="@+id/back_btn2"
         android:layout_width="51dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"

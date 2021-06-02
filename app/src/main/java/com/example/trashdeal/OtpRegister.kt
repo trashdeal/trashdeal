@@ -2,10 +2,7 @@ package com.example.trashdeal
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -39,7 +36,11 @@ class OtpRegister : AppCompatActivity() {
         resendBtn.setOnClickListener{
 
         }
-
+        val backBtn = findViewById<ImageView>(R.id.back_btn)
+        backBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, MobnoRegister::class.java))
+            finish()
+        }
     }
 
     private fun verifyAuth(credential: PhoneAuthCredential) {
