@@ -110,6 +110,8 @@ class ConnectBin : AppCompatActivity() {
         val doc: DocumentReference = fStore.collection("binLocation").document(userBinId)
         doc.get().addOnSuccessListener {
             userBin = it.get("Bin Name").toString()
+            val binNameText = findViewById<TextView>(R.id.binName)
+            binNameText.text = userBin
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
             var plastic_bin = Bin("", 0.0, 0, 0, "", "")
