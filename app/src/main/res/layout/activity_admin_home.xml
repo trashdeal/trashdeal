@@ -23,11 +23,11 @@
         android:id="@+id/manageBin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="39dp"
+        android:layout_marginTop="181dp"
         android:text="MANAGE BINS"
-        app:layout_constraintBottom_toTopOf="@+id/editPoints"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fullBinsBtn" />
+        app:layout_constraintStart_toEndOf="@+id/fullBinsBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/logoutBtn"
@@ -54,13 +54,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="26dp"
         android:text="SELL WASTE"
-        app:layout_constraintBottom_toTopOf="@+id/manageCollector"
         app:layout_constraintEnd_toStartOf="@+id/editPoints"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullBinsBtn" />
 
     <Button
         android:id="@+id/editPoints"
@@ -71,35 +71,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sellWaste" />
 
-    <Button
-        android:id="@+id/manageUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="22dp"
-        android:text="MANAGE USERS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/manageCollector"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/complaints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="CHECK COMPLAINTS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manageCollector" />
-
-    <Button
-        android:id="@+id/manageCollector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MANAGE COLLECTORS"
-        app:layout_constraintBaseline_toBaselineOf="@+id/manageUsers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/manageUsers" />
 </androidx.constraintlayout.widget.ConstraintLayout>
