@@ -19,9 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="CHOOSE VOICE INSTRUCTIONS"
+        android:text="Choose voice instructions"
         android:textColor="#000"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
@@ -36,7 +36,7 @@
         android:gravity="center"
         android:text="CHOOSE YOUR BIN"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
@@ -58,42 +58,24 @@
         app:layout_constraintVertical_bias="0.332" />
 
     <TextView
-        android:id="@+id/welcometext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Welcome to"
-        android:textColor="#000"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
-
-    <TextView
         android:id="@+id/binName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center"
-        android:text="{test bin}"
-        android:textColor="@color/colorPrimaryDark"
+        android:text="testBin"
+        android:textColor="#000"
         android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/welcometext"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.071" />
 
     <Button
         android:id="@+id/getDirectionBtn"
-        android:layout_width="200dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg_rounded_corners"
         android:text="GET DIRECTIONs to bin"
@@ -121,6 +103,7 @@
             android:layout_height="135dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:background="#fff"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -169,6 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#fff"
                 android:gravity="center"
                 android:orientation="vertical">
 
