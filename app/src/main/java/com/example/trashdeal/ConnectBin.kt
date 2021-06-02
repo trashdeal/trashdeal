@@ -120,8 +120,18 @@ class ConnectBin : AppCompatActivity() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Get Post object and use the values to update the UI
                     plastic_bin = dataSnapshot.child("PlasticBin").getValue(Bin::class.java)!!
+                    val pBinIcon = findViewById<ImageView>(R.id.pbinicon)
+                    if(plastic_bin.WasteLevel in 0..30){
+                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
+                    }else  if(plastic_bin.WasteLevel in 31..50){
+                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
+                    }else  if(plastic_bin.WasteLevel in 51..89){
+                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
+                    }else if(plastic_bin.WasteLevel >=90){
+                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                    }
+                    //Do the same for other bins
                 }
-
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Getting Post failed, log a message
                     Log.w("TAG", "loadPost:onCancelled", databaseError.toException())
