@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Bins near me"
-        android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Welcometext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bins near me"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:value="20"
+        app:haloColor="@color/colorAccent"
+        app:trackColor="#000"
+        app:tickColor="@color/colorPrimary"
+        app:thumbColor="#000"
         android:valueFrom="0"
         android:valueTo="50"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,12 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
         android:text="Set Distance"
-        android:textSize="18sp" />
+        android:textStyle="bold"
+        android:textSize="25sp" />
+
 
     <ListView
         android:id="@+id/listView2"
-        android:layout_width="411dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

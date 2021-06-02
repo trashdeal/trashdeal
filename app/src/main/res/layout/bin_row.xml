@@ -1,47 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/binName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="11dp"
-        android:textSize="30sp"
-        android:text="Test Bin" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:cardCornerRadius="10dp"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/binAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/binName"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="2dp"
-        android:text="assolna, Margao, Goa"
-        android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                >
+                <Button
+                    android:id="@+id/manageBin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dashboard_button"
+                    ></Button>
 
-    <TextView
-        android:id="@+id/binDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/binName"
-        android:text="20Km"
-        android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/binName"
+                    android:layout_width="170dp"
+                    android:layout_height="19dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="213dp"
+                    android:layout_marginBottom="64dp"
+                    android:text="Test Bin"
+                    android:textColor="#fff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textAway"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/binDistance"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/binAddress"
-        android:text="Away"
-        android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/binAddress"
+                    android:layout_width="252dp"
+                    android:layout_height="27dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginEnd="130dp"
+                    android:layout_marginBottom="21dp"
+                    android:text="Assolna, Margao, Goa"
+                    android:textColor="#fff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/binDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+
+                    android:layout_marginStart="181dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="27dp"
+                    android:layout_marginBottom="55dp"
+                    android:layout_toEndOf="@+id/binName"
+                    android:text="20KM Away"
+                    android:textColor="#fff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
 </RelativeLayout>
