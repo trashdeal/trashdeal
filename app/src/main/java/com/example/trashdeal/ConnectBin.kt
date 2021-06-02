@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -31,7 +32,6 @@ class ConnectBin : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var binding: ActivityConnectBinBinding
     lateinit var toggle: ActionBarDrawerToggle
-    val dropDownList = arrayOf("None","English","Hindi","Konkani")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -234,4 +234,11 @@ class ConnectBin : AppCompatActivity() {
     private fun condition3() {
         Toast.makeText(this, "चयनित भाषा कोंकणी है (" + binding.spinner.selectedItem + ")", Toast.LENGTH_LONG).show()
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
