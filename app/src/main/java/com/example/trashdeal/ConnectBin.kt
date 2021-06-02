@@ -35,68 +35,6 @@ class ConnectBin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityConnectBinBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        supportActionBar!!.title = "My Bin"
-        toggle = ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            R.string.open,
-            R.string.close
-        )
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.naView
-            .setNavigationItemSelectedListener {
-                when(it.itemId){
-                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
-                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
-                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
-                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
-                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
-                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
-                    R.id.miItem7 -> {
-                        val builder = AlertDialog.Builder(this)
-                        builder.setTitle("Logout")
-                        builder.setIcon(R.drawable.logout_icon)
-                        builder.setMessage("Are you sure you want to Logout?")
-                        builder.setPositiveButton("YES") { dialog, which ->
-                            auth.signOut()
-                            startActivity(Intent(this, MobnoRegister::class.java))
-                            finish()
-                        }
-                        builder.setNegativeButton(
-                            "NO"
-                        ) { dialog, _ -> dialog.dismiss() }
-                        builder.show()
-                    }
-                }
-                true
-            }
-
-        val adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinner.adapter = adapter
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                conditionNull()
-            }
-            override fun onItemSelected(parent: AdapterView<*>?,view: View?,position: Int,id: Long ) {
-                if(binding.spinner.selectedItemPosition==0){
-                }
-                if(binding.spinner.selectedItemPosition==1){
-                    condition1()
-                }
-                if(binding.spinner.selectedItemPosition==2){
-                    condition2()
-                }
-                if(binding.spinner.selectedItemPosition==3){
-                    condition3()
-                }
-            }
-
-            }
         auth = FirebaseAuth.getInstance()
         val plasticBtn = findViewById<Button>(R.id.plasticBtn)
         val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
@@ -222,6 +160,68 @@ class ConnectBin : AppCompatActivity() {
             wetBtn.setOnClickListener{
                 Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
             }
+        }
+        binding = ActivityConnectBinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar!!.title = "My Bin"
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            R.string.open,
+            R.string.close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.naView
+            .setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
+                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
+                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
+                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
+                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
+                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
+                    R.id.miItem7 -> {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Logout")
+                        builder.setIcon(R.drawable.logout_icon)
+                        builder.setMessage("Are you sure you want to Logout?")
+                        builder.setPositiveButton("YES") { dialog, which ->
+                            auth.signOut()
+                            startActivity(Intent(this, MobnoRegister::class.java))
+                            finish()
+                        }
+                        builder.setNegativeButton(
+                            "NO"
+                        ) { dialog, _ -> dialog.dismiss() }
+                        builder.show()
+                    }
+                }
+                true
+            }
+
+        val adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = adapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                conditionNull()
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                if(binding.spinner.selectedItemPosition==0){
+                }
+                if(binding.spinner.selectedItemPosition==1){
+                    condition1()
+                }
+                if(binding.spinner.selectedItemPosition==2){
+                    condition2()
+                }
+                if(binding.spinner.selectedItemPosition==3){
+                    condition3()
+                }
+            }
+
         }
     }
     private fun conditionNull() {
