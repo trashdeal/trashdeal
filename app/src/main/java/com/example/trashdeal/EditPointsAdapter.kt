@@ -31,9 +31,9 @@ class EditPointsAdapter(private val context: Context,
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         var rowView = convertView
         rowView = LayoutInflater.from(context).inflate(R.layout.edit_points_row, parent, false)
-        rowView.findViewById<TextView>(R.id.weightText).text = dataSource[position].waste_weight as String
+        rowView.findViewById<TextView>(R.id.weightText).text = dataSource[position].waste_weight.toString()
         rowView.findViewById<TextView>(R.id.typeText).text = dataSource[position].waste_type
-        rowView.findViewById<TextView>(R.id.pointsText).text = dataSource[position].waste_points as String
+        rowView.findViewById<TextView>(R.id.pointsText).text = dataSource[position].waste_points.toString()
         val editBtn = rowView.findViewById<Button>(R.id.editPointsBtn)
         editBtn.setOnClickListener{
             Toast.makeText(context, "Work in Progress: ${dataSource[position].waste_points}", Toast.LENGTH_SHORT).show()

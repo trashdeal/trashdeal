@@ -221,7 +221,6 @@ class ConnectBin : AppCompatActivity() {
                     condition3()
                 }
             }
-
         }
     }
     private fun conditionNull() {

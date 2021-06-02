@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityAdminHomeBinding
-import com.example.trashdeal.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -19,6 +18,8 @@ class adminHome : AppCompatActivity() {
     lateinit var binding: ActivityAdminHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        fStore = FirebaseFirestore.getInstance()
         binding = ActivityAdminHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.title = "Admin Dashboard"
@@ -58,8 +59,10 @@ class adminHome : AppCompatActivity() {
                 }
                 true
             }
-        auth = FirebaseAuth.getInstance()
-        fStore = FirebaseFirestore.getInstance()
+        val editsPointsBtn = findViewById<Button>(R.id.editPoints)
+        editsPointsBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, EditPoints::class.java))
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

@@ -21,11 +21,11 @@ class EditPoints : AppCompatActivity() {
         doc.get().addOnSuccessListener {
             val pointsList : ArrayList<Trash_Value> = ArrayList()
             for(document in it){
-                val waste_weight = document.data["waste_weight"] as Int
-                val waste_type = document.data["waste_type"] as String
-                val waste_points = document.data["waste_points"] as Int
-                val trash_details = Trash_Value(waste_weight,waste_type,waste_points)
-                pointsList.add(trash_details)
+                val wasteWeight = document.data["waste_weight"].toString().toInt()
+                val wasteType = document.data["waste_type"].toString()
+                val wastePoints = document.data["waste_points"].toString().toInt()
+                val trashDetails = Trash_Value(wasteWeight,wasteType,wastePoints)
+                pointsList.add(trashDetails)
             }
             val adapter = EditPointsAdapter(this, pointsList)
             listview.adapter = adapter
