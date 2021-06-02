@@ -14,7 +14,7 @@
         android:id="@+id/typeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
+        android:layout_marginStart="21dp"
         android:layout_toEndOf="@+id/weightText"
         android:text="Plastic"
         android:textSize="30sp" />
@@ -23,7 +23,7 @@
         android:id="@+id/pointsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
+        android:layout_marginStart="25dp"
         android:layout_toEndOf="@+id/typeText"
         android:text="20"
         android:textSize="30sp" />
@@ -34,6 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/typeText"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="11dp"
         android:text="EDIT POINTS" />
 </RelativeLayout>

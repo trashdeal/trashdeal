@@ -91,18 +91,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="TESTBIN"
             android:textColor="#46E0A2"
             android:textSize="27sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/getDirectionBtn"
+        android:id="@+id/getLocationBtn"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg_rounded_corners"
-        android:text="GET DIRECTIONs to bin"
+        android:text="GET DIRECTIONS TO BIN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -148,8 +147,9 @@
                         android:id="@+id/pbinicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/binfull" />
+                        android:layout_centerInParent="true" />
+<!--                        I removed the icon. it'll be added from the backend -->
+
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -21,10 +21,10 @@ class EditPoints : AppCompatActivity() {
         doc.get().addOnSuccessListener {
             val pointsList : ArrayList<Trash_Value> = ArrayList()
             for(document in it){
-                val wasteWeight = document.data["waste_weight"].toString().toInt()
+                val wasteWeight = document.data["waste_weight"].toString()+"Kg"
                 val wasteType = document.data["waste_type"].toString()
-                val wastePoints = document.data["waste_points"].toString().toInt()
-                val trashDetails = Trash_Value(wasteWeight,wasteType,wastePoints)
+                var wastePoints = document.data["waste_points"].toString().toInt()
+                val trashDetails = Trash_Value(document.id ,wasteWeight,wasteType,wastePoints)
                 pointsList.add(trashDetails)
             }
             val adapter = EditPointsAdapter(this, pointsList)

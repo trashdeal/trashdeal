@@ -3,11 +3,16 @@ package com.example.trashdeal
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Facts : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -33,9 +38,43 @@ class Facts : AppCompatActivity() {
             }
             @Suppress("DEPRECATION")
             Handler().postDelayed({
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent) //start new activity here
-                finish()
+                var userBin = intent.getStringExtra("userBin").toString()
+                var binType = intent.getStringExtra("binType").toString()
+                var waste_type = intent.getStringExtra("wasteType").toString()
+                var oldWeight = intent.getStringExtra("oldWeight").toString().toDouble()
+                val ref = FirebaseDatabase.getInstance().getReference(userBin).child(binType)
+                var newWeight: Double
+                var userWeight: Double
+                val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+                ref.child("Weight").get().addOnSuccessListener {
+                    Log.i("TAG", "Got new value ${it.value}")
+                    newWeight = it.value.toString().toDouble()
+                    userWeight = newWeight - oldWeight
+                    var pointsEarned = (userWeight*10).toInt()
+                    Log.i("TAG", "Date ${Calendar.getInstance().time}")
+                    if(pointsEarned != 0) {
+                        doc.get().addOnSuccessListener {
+                            var userPoints = pointsEarned + it.data?.get("Points").toString().toInt()
+                            doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
+                            var calendar = Calendar.getInstance()
+                            var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
+                            var dateTime = simpleDateFormat.format(calendar.time).toString()
+                            var userTransaction = hashMapOf(
+                                "Date" to dateTime,
+                                "PointsEarned" to pointsEarned,
+                                "WasteType" to waste_type,
+                                "Bin" to userBin,
+                                "WasteWeight" to userWeight
+                            )
+                            doc.collection("transactions").add(userTransaction)
+                        }
+                    }
+                    ref.child("Status").setValue("free")
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                }.addOnFailureListener{
+                    Log.e("TAG", "Error getting data", it)
+                }
             }, time)
         }
     }

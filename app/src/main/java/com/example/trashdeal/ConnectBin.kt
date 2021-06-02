@@ -36,11 +36,6 @@ class ConnectBin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        val plasticBtn = findViewById<Button>(R.id.plasticBtn)
-        val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
-        val dryBtn = findViewById<Button>(R.id.dryBtn)
-        val wetBtn = findViewById<Button>(R.id.wetBtn)
-        val getDirectionBtn = findViewById<Button>(R.id.getDirectionBtn)
         var userBinId = intent.getStringExtra("userBin").toString()
         var userBin = ""
         var binLocation = Location("")
@@ -75,6 +70,11 @@ class ConnectBin : AppCompatActivity() {
                     Log.w("TAG", "loadPost:onCancelled", databaseError.toException())
                 }
             })
+            val getDirectionBtn = findViewById<Button>(R.id.getLocationBtn)
+            val plasticBtn = findViewById<Button>(R.id.plasticBtn)
+            val ewasteBtn = findViewById<Button>(R.id.ewasteBtn)
+            val dryBtn = findViewById<Button>(R.id.dryBtn)
+            val wetBtn = findViewById<Button>(R.id.wetBtn)
             getDirectionBtn.setOnClickListener{
                 val mapsLink = "https://www.google.co.in/maps/dir//${binLocation.latitude},${binLocation.longitude}"
                 val uri: Uri? = Uri.parse(mapsLink)
@@ -85,7 +85,7 @@ class ConnectBin : AppCompatActivity() {
             }
             plasticBtn.setOnClickListener{
                 when {
-                    plastic_bin.Status == "start" -> {
+                    plastic_bin.Status != "free" -> {
                         Toast.makeText(
                             applicationContext,
                             "Sorry! Bin is in Use",
