@@ -1,7 +1,6 @@
 package com.example.trashdeal
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,14 +10,11 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.example.trashdeal.databinding.ActivityBinsNearMeBinding
 import com.google.android.gms.location.*
 import com.google.android.material.slider.Slider
 import com.google.firebase.auth.FirebaseAuth
@@ -28,8 +24,6 @@ import java.util.*
 
 
 class BinsNearMe : AppCompatActivity() {
-    lateinit var toggle: ActionBarDrawerToggle
-    lateinit var binding: ActivityBinsNearMeBinding
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var PERMISSION_ID = 1000
     private lateinit var fStore: FirebaseFirestore
@@ -39,45 +33,7 @@ class BinsNearMe : AppCompatActivity() {
     var distanceSet = 20.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBinsNearMeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        supportActionBar!!.title = "My Dashboard"
-        toggle = ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            R.string.open,
-            R.string.close
-        )
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.naView
-            .setNavigationItemSelectedListener {
-                when(it.itemId){
-                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
-                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
-                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
-                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
-                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
-                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
-                    R.id.miItem7 -> {
-                        val builder = AlertDialog.Builder(this)
-                        builder.setTitle("Logout")
-                        builder.setIcon(R.drawable.logout_icon)
-                        builder.setMessage("Are you sure you want to Logout?")
-                        builder.setPositiveButton("YES") { _, _ ->
-                            auth.signOut()
-                            startActivity(Intent(this, MobnoRegister::class.java))
-                            finish()
-                        }
-                        builder.setNegativeButton(
-                            "NO"
-                        ) { dialog, _ -> dialog.dismiss() }
-                        builder.show()
-                    }
-                }
-                true
-            }
+        setContentView(R.layout.activity_bins_near_me)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
         auth = FirebaseAuth.getInstance()
@@ -250,11 +206,5 @@ class BinsNearMe : AppCompatActivity() {
         countryName = Adress.get(0).countryName
         Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
         return cityName+","+countryName
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
-        }
-        return super.onOptionsItemSelected(item)
     }
 }
