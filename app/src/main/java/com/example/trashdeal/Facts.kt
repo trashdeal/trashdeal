@@ -3,6 +3,8 @@ package com.example.trashdeal
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +25,8 @@ class Facts : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facts)
+        val spinner = findViewById<ProgressBar>(R.id.progressBar1)
+        spinner.setVisibility(View.VISIBLE);
         val factView = findViewById<TextView>(R.id.factView)
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
@@ -59,20 +63,22 @@ class Facts : AppCompatActivity() {
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val status = dataSnapshot.child("Status").value
-                    if(status == "done" && flag == 1){
+                    if (status == "done" && flag == 1) {
                         Log.d("TAGG", "Entered $status")
                         var newWeight: Double
                         var userWeight: Double
-                        val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+                        val doc: DocumentReference =
+                            fStore.collection("user").document(auth.currentUser.uid)
                         ref.child("Weight").get().addOnSuccessListener {
                             Log.i("TAG", "Got new value ${it.value}")
                             newWeight = it.value.toString().toDouble()
                             userWeight = newWeight - oldWeight
-                            var pointsEarned = (userWeight*10).toInt() //need to change
+                            var pointsEarned = (userWeight * 10).toInt() //need to change
                             Log.i("TAG", "Date ${Calendar.getInstance().time}")
-                            if(pointsEarned != 0) {
+                            if (pointsEarned != 0) {
                                 doc.get().addOnSuccessListener {
-                                    var userPoints = pointsEarned + it.data?.get("Points").toString().toInt()
+                                    var userPoints =
+                                        pointsEarned + it.data?.get("Points").toString().toInt()
                                     doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
                                     var calendar = Calendar.getInstance()
                                     var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
@@ -88,7 +94,7 @@ class Facts : AppCompatActivity() {
                                 }
                             }
                             ref.child("Status").setValue("free")
-                        }.addOnFailureListener{
+                        }.addOnFailureListener {
                             Log.e("TAG", "Error getting data", it)
                         }
                         flag = 0
@@ -96,6 +102,7 @@ class Facts : AppCompatActivity() {
                     }
                     Log.d("TAGG", "called $status")
                 }
+
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Getting Post failed, log a message
                     Log.w("TAG", "loadPost:onCancelled", databaseError.toException())

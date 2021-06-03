@@ -5,6 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.trashdeal.databinding.ActivityMainBinding
 import com.example.trashdeal.databinding.ActivityPointsRedeemBinding
@@ -57,6 +60,10 @@ class PointsRedeem : AppCompatActivity() {
                 }
                 true
             }
+        val redeem = findViewById<Button>(R.id.redeemptsbtn)
+        redeem.setOnClickListener{
+            Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
