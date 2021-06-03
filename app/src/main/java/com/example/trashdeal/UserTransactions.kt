@@ -5,10 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.trashdeal.databinding.ActivityMainBinding
 import com.example.trashdeal.databinding.ActivityUserTransactionsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -23,7 +23,7 @@ class UserTransactions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserTransactionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.title = "My Dashboard"
+        supportActionBar!!.title = "My Trash History"
         toggle = ActionBarDrawerToggle(
             this,
             binding.drawerLayout,

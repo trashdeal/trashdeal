@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -20,7 +21,7 @@
             app:cardCornerRadius="10dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#000"
@@ -34,58 +35,64 @@
 
                 <TextView
                     android:id="@+id/binName"
-                    android:layout_width="170dp"
-                    android:layout_height="19dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="213dp"
-                    android:layout_marginBottom="64dp"
                     android:text="Test Bin"
                     android:textColor="#fff"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/manageBin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.070"
+                    app:layout_constraintStart_toStartOf="@+id/manageBin"
+                    app:layout_constraintTop_toTopOf="@+id/manageBin"
+                    app:layout_constraintVertical_bias="0.300" />
 
                 <TextView
                     android:id="@+id/binAddress"
-                    android:layout_width="252dp"
-                    android:layout_height="27dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="52dp"
-                    android:layout_marginEnd="130dp"
-                    android:layout_marginBottom="21dp"
                     android:text="Assolna, Margao, Goa"
                     android:textColor="#fff"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/manageBin"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/binName"
+                    app:layout_constraintTop_toTopOf="@+id/manageBin"
+                    app:layout_constraintVertical_bias="0.675" />
 
                 <TextView
                     android:id="@+id/binDistance"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
 
-                    android:layout_marginStart="181dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="27dp"
-                    android:layout_marginBottom="55dp"
                     android:layout_toEndOf="@+id/binName"
                     android:text="20KM Away"
                     android:textColor="#fff"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.904"
+                    app:layout_constraintStart_toStartOf="@+id/manageBin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.300" />
 
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
