@@ -26,7 +26,6 @@ import com.google.firebase.firestore.SetOptions
 import java.util.*
 
 
-@Suppress("UNREACHABLE_CODE")
 class ConnectBin : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
@@ -47,21 +46,26 @@ class ConnectBin : AppCompatActivity() {
             binNameText.text = userBin
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
-            var plastic_bin = Bin("", 0.0, 0, 0, "", "")
+            var plasticBin = Bin("", 0.0, 0, 0, "", "")
             val ref = FirebaseDatabase.getInstance().getReference(userBin)
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Get Post object and use the values to update the UI
-                    plastic_bin = dataSnapshot.child("PlasticBin").getValue(Bin::class.java)!!
+                    plasticBin = dataSnapshot.child("PlasticBin").getValue(Bin::class.java)!!
                     val pBinIcon = findViewById<ImageView>(R.id.pbinicon)
-                    if(plastic_bin.WasteLevel in 0..30){
-                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
-                    }else  if(plastic_bin.WasteLevel in 31..50){
-                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
-                    }else  if(plastic_bin.WasteLevel in 51..89){
-                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
-                    }else if(plastic_bin.WasteLevel >=90){
-                        pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                    when {
+                        plasticBin.WasteLevel in 0..30 -> {
+                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
+                        }
+                        plasticBin.WasteLevel in 31..50 -> {
+                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
+                        }
+                        plasticBin.WasteLevel in 51..89 -> {
+                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
+                        }
+                        plasticBin.WasteLevel >=90 -> {
+                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                        }
                     }
                     //Do the same for other bins
                 }
@@ -85,14 +89,14 @@ class ConnectBin : AppCompatActivity() {
             }
             plasticBtn.setOnClickListener{
                 when {
-                    plastic_bin.Status != "free" -> {
+                    plasticBin.Status != "free" -> {
                         Toast.makeText(
                             applicationContext,
                             "Sorry! Bin is in Use",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                    plastic_bin.WasteLevel >= 90 -> {
+                    plasticBin.WasteLevel >= 90 -> {
                         Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
@@ -241,5 +245,4 @@ class ConnectBin : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

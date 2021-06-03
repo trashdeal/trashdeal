@@ -30,12 +30,7 @@ class UseBin : AppCompatActivity() {
         var binType = intent.getStringExtra("binType").toString()
         val ref = FirebaseDatabase.getInstance().getReference(userBin).child(binType)
         binNameView.text = userBin
-        ref.child("Weight").get().addOnSuccessListener {
-            Log.i("TAG", "Got value ${it.value}")
-            oldWeight = it.value.toString().toDouble()
-        }.addOnFailureListener{
-            Log.e("TAG", "Error getting data", it)
-        }
+
         fun startTimer() {
             // TODO Auto-generated method stub
             super.onUserInteraction()
@@ -62,7 +57,13 @@ class UseBin : AppCompatActivity() {
             if(binControlBtn.isChecked){
                 startTimer()
                 Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
-                ref.child("BinLid").setValue("open")
+                ref.child("Weight").get().addOnSuccessListener {
+                    Log.i("TAG", "Got value ${it.value}")
+                    oldWeight = it.value.toString().toDouble()
+                    ref.child("BinLid").setValue("open")
+                }.addOnFailureListener{
+                    Log.e("TAG", "Error getting data", it)
+                }
             }else{
                 val builder = AlertDialog.Builder(this)
                 builder.setCancelable(false)

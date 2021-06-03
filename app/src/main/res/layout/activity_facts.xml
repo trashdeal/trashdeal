@@ -10,9 +10,8 @@
         android:id="@+id/headFacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="262dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="115dp"
         android:text="Did You Know?"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/factView"
@@ -21,15 +20,25 @@
 
     <TextView
         android:id="@+id/factView"
-        android:layout_width="326dp"
-        android:layout_height="174dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="254dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="48dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/loadingTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/headFacts"
+        app:layout_constraintTop_toBottomOf="@+id/headFacts" />
+
+    <TextView
+        android:id="@+id/loadingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginBottom="314dp"
+        android:text="Loading...."
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headFacts" />
+        app:layout_constraintStart_toStartOf="@+id/factView"
+        app:layout_constraintTop_toBottomOf="@+id/factView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
