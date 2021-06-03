@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,11 @@ class BinsNearMe : AppCompatActivity() {
         getLastLocation()
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
+        val backBtn = findViewById<ImageView>(R.id.back_btn2)
+        backBtn.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+            finish()
+        }
         val listview = findViewById<ListView>(R.id.listView2)
         val distanceSlider = findViewById<Slider>(R.id.slider)
         distanceSlider.setLabelFormatter { value: Float ->
@@ -104,6 +110,7 @@ class BinsNearMe : AppCompatActivity() {
             PERMISSION_ID
         )
     }
+
     private fun isLocationEnabled():Boolean{
         //this function will return to us the state of the location service
         //if the gps or the network provider is enabled then it will return true otherwise it will return false
