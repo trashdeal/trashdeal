@@ -63,6 +63,9 @@
         <a href="tel:+917378407152">+91 7378407152</a>
     </string>
 
+    <string name="start">Open Bin</string>
+    <string name="stop">Close Bin</string>
+
     <string-array name="languages">
         <item>None</item>
         <item>English</item>

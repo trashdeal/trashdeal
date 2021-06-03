@@ -3,25 +3,30 @@ package com.example.trashdeal
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.KeyEvent
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.trashdeal.databinding.ActivityUseBinBinding
+import com.google.common.collect.ComparisonChain.start
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
 class UseBin : AppCompatActivity() {
+    lateinit var binding: ActivityUseBinBinding
+    private var handlerAnimation = Handler()
+    private var statusAnimation = false
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private var oldWeight = 0.0
     var timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_use_bin)
+        binding = ActivityUseBinBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val binControlBtn = findViewById<ToggleButton>(R.id.binControl)
         val binNameView = findViewById<TextView>(R.id.binName)
         auth = FirebaseAuth.getInstance()
@@ -55,6 +60,7 @@ class UseBin : AppCompatActivity() {
         startTimer()
         binControlBtn.setOnClickListener{
             if(binControlBtn.isChecked){
+                startPulse()
                 startTimer()
                 Toast.makeText(applicationContext, "Opening Bin Lid..", Toast.LENGTH_SHORT).show()
                 ref.child("Weight").get().addOnSuccessListener {
@@ -65,6 +71,7 @@ class UseBin : AppCompatActivity() {
                     Log.e("TAG", "Error getting data", it)
                 }
             }else{
+                stopPulse()
                 val builder = AlertDialog.Builder(this)
                 builder.setCancelable(false)
                 builder.setTitle("Confirm")
@@ -91,10 +98,39 @@ class UseBin : AppCompatActivity() {
                 }
                 builder.show()
             }
+            statusAnimation = !statusAnimation
         }
     }
     override fun onBackPressed() {
         super.onBackPressed()
         KeyEvent.KEYCODE_BACK
+    }
+    private fun startPulse() {
+        runnable.run()
+    }
+
+    private fun stopPulse() {
+        handlerAnimation.removeCallbacks(runnable)
+    }
+
+    private var runnable = object : Runnable {
+        override fun run() {
+
+            binding.imgAnimation1.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(1000)
+                .withEndAction {
+                    binding.imgAnimation1.scaleX = 1f
+                    binding.imgAnimation1.scaleY = 1f
+                    binding.imgAnimation1.alpha = 1f
+                }
+
+            binding.imgAnimation2.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(700)
+                .withEndAction {
+                    binding.imgAnimation2.scaleX = 1f
+                    binding.imgAnimation2.scaleY = 1f
+                    binding.imgAnimation2.alpha = 1f
+                }
+
+            handlerAnimation.postDelayed(this, 1500)
+        }
     }
 }
