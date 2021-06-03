@@ -4,34 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+        android:layout_width="401dp"
+        android:layout_height="98dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:gravity="center"
-            app:cardCornerRadius="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#000"
-                >
+                android:background="#000">
+
                 <Button
                     android:id="@+id/manageBin"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/dashboard_button"
-                    ></Button>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></Button>
 
                 <TextView
                     android:id="@+id/binName"
@@ -41,14 +45,17 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="135dp"
                     android:text="Test Bin"
                     android:textColor="#fff"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/manageBin"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/goToBinBtn"
                     app:layout_constraintHorizontal_bias="0.070"
-                    app:layout_constraintStart_toStartOf="@+id/manageBin"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/manageBin"
                     app:layout_constraintVertical_bias="0.300" />
 
@@ -91,6 +98,18 @@
                     app:layout_constraintStart_toStartOf="@+id/manageBin"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.300" />
+
+                <Button
+                    android:id="@+id/goToBinBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="37dp"
+                    android:layout_marginEnd="110dp"
+                    android:text="VIEW"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/binName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.507" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

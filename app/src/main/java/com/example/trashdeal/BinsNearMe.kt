@@ -56,7 +56,6 @@ class BinsNearMe : AppCompatActivity() {
                 for(document in it){
                     binLocation.latitude = document.data["Latitude"] as Double
                     binLocation.longitude = document.data["Longitude"] as Double
-                    Log.d("TAG", "bin current latitude: ${binLocation.latitude} and my current bin longitude: ${binLocation.longitude}")
                     var results = FloatArray(10)
                     Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLocation.latitude, binLocation.longitude ,results)
                     val distance = String.format("%.1f",results[0]/1000)
@@ -69,6 +68,7 @@ class BinsNearMe : AppCompatActivity() {
                 listview.adapter = adapter
                 listview.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id -> // set an Intent to Another Activity
+                        Log.i("TAG", "Tapped on ${binList[position].binID}")
                         val intent = Intent(this, ConnectBin::class.java)
                         intent.putExtra("userBin", binList[position].binID)
                         startActivity(intent)
