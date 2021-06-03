@@ -82,7 +82,7 @@ class Facts : AppCompatActivity() {
                                         "PointsEarned" to pointsEarned,
                                         "WasteType" to wasteType,
                                         "Bin" to userBin,
-                                        "WasteWeight" to userWeight
+                                        "WasteWeight" to String.format("%.2f",userWeight).toDouble()
                                     )
                                     doc.collection("transactions").add(userTransaction)
                                 }

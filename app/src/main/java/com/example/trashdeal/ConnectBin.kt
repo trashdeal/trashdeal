@@ -42,12 +42,13 @@ class ConnectBin : AppCompatActivity() {
         val doc: DocumentReference = fStore.collection("binLocation").document(userBinId)
         doc.get().addOnSuccessListener {
             userBin = it.get("Bin Name").toString()
+            val ref = FirebaseDatabase.getInstance().getReference(userBin)
+            ref.child("PlasticBin").child("Language").setValue("none")
             val binNameText = findViewById<TextView>(R.id.binName)
             binNameText.text = userBin
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
             var plasticBin = Bin("", 0.0, 0, 0, "", "")
-            val ref = FirebaseDatabase.getInstance().getReference(userBin)
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Get Post object and use the values to update the UI
@@ -232,12 +233,19 @@ class ConnectBin : AppCompatActivity() {
     }
     private fun condition1() {
         Toast.makeText(this, "Selected language is " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
+        val ref = FirebaseDatabase.getInstance().getReference("TestBin")
+        ref.child("PlasticBin").child("Language").setValue("english")
+
     }
     private fun condition2() {
         Toast.makeText(this, "चयनित भाषा हिंदी है (" + binding.spinner.selectedItem + ")", Toast.LENGTH_LONG).show()
+        val ref = FirebaseDatabase.getInstance().getReference("TestBin")
+        ref.child("PlasticBin").child("Language").setValue("hindi")
     }
     private fun condition3() {
         Toast.makeText(this, "चयनित भाषा कोंकणी है (" + binding.spinner.selectedItem + ")", Toast.LENGTH_LONG).show()
+        val ref = FirebaseDatabase.getInstance().getReference("TestBin")
+        ref.child("PlasticBin").child("Language").setValue("konkani")
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
