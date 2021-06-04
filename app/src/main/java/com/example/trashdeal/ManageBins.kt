@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -35,34 +34,18 @@ class ManageBins : AppCompatActivity() {
             }
             val adapter = ManageBinsAdapter(this, allBins)
             listview.adapter = adapter
-        }
-        val searchBar = findViewById<SearchView>(R.id.searchBin)
-        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                searchBar.clearFocus()
-                for(d in allBins){
-                    if(d.binName == query ){
-                        val allBins : ArrayList<BinLocation> = ArrayList()
-                        doc.document(d.binID).get().addOnSuccessListener {
-                            var binLocation: Location = Location("")
-                            val binName = it.data?.get("Bin Name").toString()
-                            binLocation.latitude = it.data?.get("Latitude") as Double
-                            binLocation.longitude = it.data?.get("Longitude") as Double
-                            val currentBin = BinLocation(it.id, binName,getCityName(binLocation.latitude, binLocation.longitude),"")
-                            allBins.add(currentBin)
-                        }
-                        val adapter = ManageBinsAdapter(applicationContext, allBins)
-                        listview.adapter = adapter
-                    }else{
-                        Toast.makeText(applicationContext, "Item not found", Toast.LENGTH_SHORT)
-                    }
+            val searchBar = findViewById<SearchView>(R.id.searchBin)
+            searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+
+                    return true
                 }
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    adapter.filter.filter(newText)
+                    return true
+                }
+            })
+        }
     }
     private fun getCityName(lat: Double,long: Double):String{
         var cityName = ""

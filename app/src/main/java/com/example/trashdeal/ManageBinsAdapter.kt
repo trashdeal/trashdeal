@@ -6,14 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import java.util.*
 
 class ManageBinsAdapter(private val context: Context,
-                        private val dataSource: ArrayList<BinLocation>) : BaseAdapter() {
+                        private var dataSource: ArrayList<BinLocation>) : BaseAdapter(), Filterable{
+    private val dataSourceFilter = dataSource
+
     override fun getCount(): Int {
         return dataSource.size
     }
@@ -46,5 +45,35 @@ class ManageBinsAdapter(private val context: Context,
             builder.show()
         }
         return rowView
+    }
+
+    override fun getFilter(): Filter {
+        return customFilter
+    }
+    private val customFilter =object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList = ArrayList<BinLocation>()
+            if (constraint == null || constraint.isEmpty()) {
+                filteredList.addAll(dataSourceFilter)
+            } else {
+                for (item in dataSourceFilter) {
+                    if (item.binName.toLowerCase()
+                            .startsWith(constraint.toString().toLowerCase()) ||
+                        item.binAddress.toLowerCase()
+                            .startsWith(constraint.toString().toLowerCase())
+                    ) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            dataSource = results?.values as ArrayList<BinLocation>
+            notifyDataSetChanged()
+        }
     }
 }
