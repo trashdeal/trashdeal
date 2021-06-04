@@ -122,6 +122,7 @@ class ConnectBin : AppCompatActivity() {
                                     Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
                                         .show()
                                 } else {
+                                    ref.child("PlasticBin").child("OTP").setValue(2222)
                                     val doc1: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
                                     doc1.set(hashMapOf("DefaultBin" to userBinId), SetOptions.merge())
                                     startActivity(Intent(applicationContext, UseBin::class.java).apply {
