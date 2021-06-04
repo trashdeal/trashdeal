@@ -130,7 +130,7 @@ android:id="@+id/drawerLayout">
                             android:layout_marginTop="10dp"
 
                             android:layout_marginBottom="10dp"
-                            android:text="Points"
+                            android:text="Redeem Points"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
                             android:textStyle="bold"></TextView>

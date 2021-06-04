@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Earned"
                 android:textColor="#000"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

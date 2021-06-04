@@ -2,14 +2,13 @@ package com.example.trashdeal
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import com.example.trashdeal.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityPointsRedeemBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -60,6 +59,7 @@ class PointsRedeem : AppCompatActivity() {
                 }
                 true
             }
+        findViewById<TextView>(R.id.ptsdisplay).text = intent.getStringExtra("redeemPoints").toString()
         val redeem = findViewById<Button>(R.id.redeemptsbtn)
         redeem.setOnClickListener{
             Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()

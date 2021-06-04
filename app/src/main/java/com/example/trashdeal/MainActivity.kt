@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                         val pointsBtn = findViewById<Button>(R.id.buttonscore)
                         val trashHistory = findViewById<Button>(R.id.buttonhistory)
                         val binNearMeBtn = findViewById<Button>(R.id.buttonbinsnear)
-                        doc.get().addOnSuccessListener { points.text = it.data?.get("Points").toString()+"xp" }
+                        doc.get().addOnSuccessListener { points.text = "+"+it.data?.get("Points").toString()+"xp" }
                         val user = it.data
                         useBin.setOnClickListener{
                             if(!user?.get("DefaultBin")?.equals("")!!){
@@ -87,7 +87,9 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                         pointsBtn.setOnClickListener{
-                            startActivity(Intent(applicationContext, PointsRedeem::class.java))
+                            startActivity(Intent(applicationContext, PointsRedeem::class.java).apply {
+                                putExtra("redeemPoints", "+"+user?.get("Points").toString()+"xp")
+                            })
                         }
                         trashHistory.setOnClickListener{
                             startActivity(Intent(applicationContext, UserTransactions::class.java))

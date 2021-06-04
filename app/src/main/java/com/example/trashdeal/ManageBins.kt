@@ -75,6 +75,6 @@ class ManageBins : AppCompatActivity() {
         countryName = Adress.get(0).countryName
         postalCode = Adress.get(0).postalCode
         Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
-        return "$cityName,$countryName,$postalCode"
+        return "$cityName,$countryName-$postalCode"
     }
 }
