@@ -25,22 +25,27 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#000">
+                android:background="#000"
+                app:layout_constraintEnd_toEndOf="@+id/binAddress"
+                app:layout_constraintStart_toEndOf="@+id/binAddress">
 
                 <TextView
                     android:id="@+id/binName"
-                    android:layout_width="170dp"
+                    android:layout_width="0dp"
                     android:layout_height="19dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginEnd="76dp"
                     android:text="Test Bin"
                     android:textColor="#fff"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/deleteBin"
                     app:layout_constraintHorizontal_bias="0.216"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -66,33 +71,20 @@
                     app:layout_constraintTop_toTopOf="@+id/manageBin"
                     app:layout_constraintVertical_bias="0.675" />
 
-                <TextView
-                    android:id="@+id/binDistance"
+                <Button
+                    android:id="@+id/deleteBin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-
-                    android:layout_marginEnd="16dp"
-                    android:layout_toEndOf="@+id/binName"
-                    android:text="20KM Away"
-                    android:textColor="#fff"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
+                    android:layout_marginEnd="41dp"
+                    android:drawableRight="@drawable/bin_icon"
+                    android:text="DELETE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.745"
-                    app:layout_constraintStart_toEndOf="@+id/binAddress"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.45" />
+                    app:layout_constraintStart_toEndOf="@+id/binName"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.cardview.widget.CardView>
-
-
     </LinearLayout>
 </RelativeLayout>

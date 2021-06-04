@@ -63,6 +63,11 @@ class adminHome : AppCompatActivity() {
         editsPointsBtn.setOnClickListener{
             startActivity(Intent(applicationContext, EditPoints::class.java))
         }
+
+        val manageBinBtn = findViewById<Button>(R.id.manageBin)
+        manageBinBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, ManageBins::class.java))
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

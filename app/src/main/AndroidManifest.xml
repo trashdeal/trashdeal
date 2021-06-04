@@ -16,8 +16,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".EditPoints"></activity>
-        <activity android:name=".adminHome"></activity>
+        <activity android:name=".ManageBins"></activity>
+        <activity android:name=".EditPoints" />
+        <activity android:name=".adminHome" />
         <activity android:name=".PointsRedeem" />
         <activity android:name=".MoreInformation" />
         <activity android:name=".Help" />
