@@ -1,9 +1,11 @@
 package com.example.trashdeal
 
+import android.content.Intent
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ListView
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,18 +48,20 @@ class ManageBins : AppCompatActivity() {
                 }
             })
         }
+        val addBinsBtn = findViewById<Button>(R.id.addBinsBtn)
+        addBinsBtn.setOnClickListener{
+            startActivity(Intent(this, AddBins::class.java))
+        }
     }
     private fun getCityName(lat: Double,long: Double):String{
         var cityName = ""
         var countryName = ""
-        var postalCode = ""
         var geoCoder = Geocoder(this, Locale.getDefault())
         var Adress = geoCoder.getFromLocation(lat,long,3)
 
         cityName = Adress.get(0).locality
         countryName = Adress.get(0).countryName
-        postalCode = Adress.get(0).postalCode
         Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
-        return "$cityName,$countryName-$postalCode"
+        return "$cityName,$countryName"
     }
 }
