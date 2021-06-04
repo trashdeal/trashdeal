@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.KeyEvent
-import android.widget.*
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityUseBinBinding
-import com.google.common.collect.ComparisonChain.start
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
