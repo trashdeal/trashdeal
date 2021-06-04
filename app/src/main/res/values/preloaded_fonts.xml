@@ -5,8 +5,9 @@
         <item>@font/alegreya_sc_bold</item>
         <item>@font/alfa_slab_one</item>
         <item>@font/amethysta</item>
-<!--        <item>@font/andada</item>-->
+        <!--        <item>@font/andada</item>-->
         <item>@font/antic_slab</item>
+        <item>@font/cantata_one</item>
         <item>@font/carme</item>
         <item>@font/lemonada_semibold</item>
     </array>
