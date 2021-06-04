@@ -94,6 +94,7 @@ class Facts : AppCompatActivity() {
                                 }
                             }
                             ref.child("Status").setValue("free")
+                            ref.child("Language").setValue("none")
                         }.addOnFailureListener {
                             Log.e("TAG", "Error getting data", it)
                         }

@@ -34,7 +34,7 @@ class UseBin : AppCompatActivity() {
         var userBin = intent.getStringExtra("userBin").toString()
         var binType = intent.getStringExtra("binType").toString()
         val ref = FirebaseDatabase.getInstance().getReference(userBin).child(binType)
-        binNameView.text = userBin
+        binNameView.text = "You are using $binType at $userBin"
 
         fun startTimer() {
             // TODO Auto-generated method stub

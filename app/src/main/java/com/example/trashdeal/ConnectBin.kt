@@ -43,9 +43,8 @@ class ConnectBin : AppCompatActivity() {
         doc.get().addOnSuccessListener {
             userBin = it.get("Bin Name").toString()
             val ref = FirebaseDatabase.getInstance().getReference(userBin)
-            ref.child("PlasticBin").child("Language").setValue("none")
             val binNameText = findViewById<TextView>(R.id.binName)
-            binNameText.text = userBin
+            binNameText.text = "Welcome to $userBin"
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
             var plasticBin = Bin("", 0.0, 0, 0, "", "")
