@@ -9,6 +9,7 @@
     android:background="#fff"
     android:id="@+id/drawerLayout">
 
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -22,27 +23,13 @@
         android:text="Choose voice instructions"
         android:textColor="#000"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
-
-    <TextView
-        android:id="@+id/txtcol9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="CHOOSE YOUR BIN"
-        android:textColor="#000"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.359" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -55,59 +42,37 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintVertical_bias="0.399" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:orientation="horizontal"
+    <TextView
+        android:id="@+id/binName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="27sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062">
-
-
-        <TextView
-            android:id="@+id/Welcometext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
-            android:gravity="center"
-            android:text="Welcome to"
-            android:textColor="#000"
-            android:textSize="27sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.071" />
-
-        <TextView
-            android:id="@+id/binName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="#46E0A2"
-            android:textSize="27sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.064" />
 
     <Button
         android:id="@+id/getLocationBtn"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_bg_rounded_corners"
+        android:background="@drawable/green_button"
         android:text="GET DIRECTIONS TO BIN"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.207"
+        app:layout_constraintVertical_bias="0.199"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -119,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89">
+        app:layout_constraintVertical_bias="0.90">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,6 +100,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                app:cardCornerRadius="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -178,6 +144,7 @@
                 android:layout_weight="1"
                 android:background="#fff"
                 android:gravity="center"
+                app:cardCornerRadius="40dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -228,6 +195,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                app:cardCornerRadius="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -268,6 +236,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                app:cardCornerRadius="40dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
