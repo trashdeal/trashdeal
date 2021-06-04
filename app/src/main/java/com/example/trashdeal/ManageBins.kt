@@ -64,4 +64,8 @@ class ManageBins : AppCompatActivity() {
         Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
         return "$cityName,$countryName"
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, adminHome::class.java))
+    }
 }

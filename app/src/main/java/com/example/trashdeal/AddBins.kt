@@ -68,6 +68,7 @@ class AddBins : AppCompatActivity() {
                         addRTBin("WetWaste")
                         Toast.makeText(this,"Bin ${binName.text.toString()} Added!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, ManageBins::class.java))
+                        finish()
                     } else {
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {
                             Toast.makeText(this,"Couldn't Add Info", Toast.LENGTH_SHORT).show()
