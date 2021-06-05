@@ -157,8 +157,7 @@
                         android:id="@+id/ewasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/binalmostfull" />
+                        android:layout_centerInParent="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -209,8 +208,7 @@
                         android:id="@+id/wetwasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/binalmostlow" />
+                        android:layout_centerInParent="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -249,8 +247,7 @@
                         android:id="@+id/drywasteicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/binempty" />
+                        android:layout_centerInParent="true" />
 
                     <TextView
                         android:layout_width="wrap_content"

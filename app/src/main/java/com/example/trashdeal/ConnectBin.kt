@@ -48,26 +48,37 @@ class ConnectBin : AppCompatActivity() {
             binLocation.latitude = it.get("Latitude").toString().toDouble()
             binLocation.longitude = it.get("Longitude").toString().toDouble()
             var plasticBin = Bin("", 0.0, 0, 0, "", "")
+            var ewasteBin = Bin("", 0.0, 0, 0, "", "")
+            var dryBin = Bin("", 0.0, 0, 0, "", "")
+            var wetBin = Bin("", 0.0, 0, 0, "", "")
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // Get Post object and use the values to update the UI
                     plasticBin = dataSnapshot.child("PlasticBin").getValue(Bin::class.java)!!
-                    val pBinIcon = findViewById<ImageView>(R.id.pbinicon)
-                    when {
-                        plasticBin.WasteLevel in 0..30 -> {
-                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
-                        }
-                        plasticBin.WasteLevel in 31..50 -> {
-                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
-                        }
-                        plasticBin.WasteLevel in 51..89 -> {
-                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
-                        }
-                        plasticBin.WasteLevel >=90 -> {
-                            pBinIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                    ewasteBin = dataSnapshot.child("EWaste").getValue(Bin::class.java)!!
+                    dryBin = dataSnapshot.child("DryWaste").getValue(Bin::class.java)!!
+                    wetBin = dataSnapshot.child("WetWaste").getValue(Bin::class.java)!!
+                    fun updateBinRT(binType: Bin, imageViewID: Int){
+                        val binIcon = findViewById<ImageView>(imageViewID)
+                        when {
+                            binType.WasteLevel in 0..30 -> {
+                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
+                            }
+                            binType.WasteLevel in 31..50 -> {
+                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
+                            }
+                            binType.WasteLevel in 51..89 -> {
+                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
+                            }
+                            binType.WasteLevel >=90 -> {
+                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                            }
                         }
                     }
-                    //Do the same for other bins
+                    updateBinRT(plasticBin,R.id.pbinicon)
+                    updateBinRT(ewasteBin,R.id.ewasteicon)
+                    updateBinRT(dryBin,R.id.drywasteicon)
+                    updateBinRT(wetBin,R.id.wetwasteicon)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Getting Post failed, log a message
@@ -87,23 +98,23 @@ class ConnectBin : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
-            plasticBtn.setOnClickListener{
+            fun useBin(bin: Bin, binType: String, wasteType: String, ){
                 when {
-                    plasticBin.Status != "free" -> {
+                    bin.Status != "free" -> {
                         Toast.makeText(
                             applicationContext,
                             "Sorry! Bin is in Use",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                    plasticBin.WasteLevel >= 90 -> {
+                    bin.WasteLevel >= 90 -> {
                         Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
                     }
                     else -> {
                         val timer = Timer()
-                        ref.child("PlasticBin").child("Status").setValue("start")
+                        ref.child(binType).child("Status").setValue("start")
                         var OTP = (Math.random() * (99999 - 10000 + 1) + 10000).toInt()
-                        ref.child("PlasticBin").child("OTP").setValue(OTP)
+                        ref.child(binType).child("OTP").setValue(OTP)
                         var otpInp = ""
                         val builder: android.app.AlertDialog.Builder =
                             android.app.AlertDialog.Builder(this)
@@ -117,18 +128,18 @@ class ConnectBin : AppCompatActivity() {
                                 timer.cancel()
                                 otpInp = input.text.toString()
                                 if (otpInp == "" || OTP != otpInp.toInt()) {
-                                    ref.child("PlasticBin").child("Status").setValue("end")
-                                    ref.child("PlasticBin").child("OTP").setValue(1111)
+                                    ref.child(binType).child("Status").setValue("end")
+                                    ref.child(binType).child("OTP").setValue(1111)
                                     Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
                                         .show()
                                 } else {
-                                    ref.child("PlasticBin").child("OTP").setValue(2222)
+                                    ref.child(binType).child("OTP").setValue(2222)
                                     val doc1: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
                                     doc1.set(hashMapOf("DefaultBin" to userBinId), SetOptions.merge())
                                     startActivity(Intent(applicationContext, UseBin::class.java).apply {
                                         putExtra("userBin", userBin)
-                                        putExtra("binType", "PlasticBin")
-                                        putExtra("wasteType", "Plastic")
+                                        putExtra("binType", binType)
+                                        putExtra("wasteType", wasteType)
                                     })
                                 }
                             })
@@ -136,8 +147,8 @@ class ConnectBin : AppCompatActivity() {
                             DialogInterface.OnClickListener { dialog, _ ->
                                 timer.cancel()
                                 dialog.cancel()
-                                ref.child("PlasticBin").child("Status").setValue("end")
-                                ref.child("PlasticBin").child("OTP").setValue(0)
+                                ref.child(binType).child("Status").setValue("end")
+                                ref.child(binType).child("OTP").setValue(0)
                             })
                         builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
                             keyCode == KeyEvent.KEYCODE_BACK
@@ -147,8 +158,8 @@ class ConnectBin : AppCompatActivity() {
                         dialog?.setCancelable(false)
                         timer.schedule(object : TimerTask() {
                             override fun run() {
-                                ref.child("PlasticBin").child("Status").setValue("end")
-                                ref.child("PlasticBin").child("OTP").setValue(0)
+                                ref.child(binType).child("Status").setValue("end")
+                                ref.child(binType).child("OTP").setValue(0)
                                 dialog?.dismiss()
                                 timer.cancel() //this will cancel the timer of the system
                             }
@@ -156,14 +167,84 @@ class ConnectBin : AppCompatActivity() {
                     }
                 }
             }
+            plasticBtn.setOnClickListener{
+//                when {
+//                    plasticBin.Status != "free" -> {
+//                        Toast.makeText(
+//                            applicationContext,
+//                            "Sorry! Bin is in Use",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                    plasticBin.WasteLevel >= 90 -> {
+//                        Toast.makeText(applicationContext, "Sorry! Bin is Full", Toast.LENGTH_SHORT).show()
+//                    }
+//                    else -> {
+//                        val timer = Timer()
+//                        ref.child("PlasticBin").child("Status").setValue("start")
+//                        var OTP = (Math.random() * (99999 - 10000 + 1) + 10000).toInt()
+//                        ref.child("PlasticBin").child("OTP").setValue(OTP)
+//                        var otpInp = ""
+//                        val builder: android.app.AlertDialog.Builder =
+//                            android.app.AlertDialog.Builder(this)
+//                        builder.setTitle("Enter OTP displayed on the bin")
+//                        val input = EditText(this)
+//                        input.inputType =
+//                            InputType.TYPE_CLASS_NUMBER
+//                        builder.setView(input)
+//                        builder.setPositiveButton("Verify",
+//                            DialogInterface.OnClickListener { dialog, which ->
+//                                timer.cancel()
+//                                otpInp = input.text.toString()
+//                                if (otpInp == "" || OTP != otpInp.toInt()) {
+//                                    ref.child("PlasticBin").child("Status").setValue("end")
+//                                    ref.child("PlasticBin").child("OTP").setValue(1111)
+//                                    Toast.makeText(applicationContext, "Invalid OTP..", Toast.LENGTH_SHORT)
+//                                        .show()
+//                                } else {
+//                                    ref.child("PlasticBin").child("OTP").setValue(2222)
+//                                    val doc1: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+//                                    doc1.set(hashMapOf("DefaultBin" to userBinId), SetOptions.merge())
+//                                    startActivity(Intent(applicationContext, UseBin::class.java).apply {
+//                                        putExtra("userBin", userBin)
+//                                        putExtra("binType", "PlasticBin")
+//                                        putExtra("wasteType", "Plastic")
+//                                    })
+//                                }
+//                            })
+//                        builder.setNegativeButton("Cancel",
+//                            DialogInterface.OnClickListener { dialog, _ ->
+//                                timer.cancel()
+//                                dialog.cancel()
+//                                ref.child("PlasticBin").child("Status").setValue("end")
+//                                ref.child("PlasticBin").child("OTP").setValue(0)
+//                            })
+//                        builder.setOnKeyListener(DialogInterface.OnKeyListener { _, keyCode, _ -> // Prevent dialog close on back press button
+//                            keyCode == KeyEvent.KEYCODE_BACK
+//                        })
+//                        val dialog: android.app.AlertDialog? = builder.create()
+//                        dialog?.show()
+//                        dialog?.setCancelable(false)
+//                        timer.schedule(object : TimerTask() {
+//                            override fun run() {
+//                                ref.child("PlasticBin").child("Status").setValue("end")
+//                                ref.child("PlasticBin").child("OTP").setValue(0)
+//                                dialog?.dismiss()
+//                                timer.cancel() //this will cancel the timer of the system
+//                            }
+//                        }, 120 * 1000) //120 seconds delay
+//                    }
+//                }
+                useBin(plasticBin,"PlasticBin","Plastic-waste")
+            }
             ewasteBtn.setOnClickListener{
-                Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+                useBin(ewasteBin,"EWaste","E-Waste")
             }
             dryBtn.setOnClickListener{
-                Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+                useBin(dryBin,"DryWaste","Dry-Waste")
             }
             wetBtn.setOnClickListener{
-                Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+                useBin(wetBin,"WetWaste","Wet-Waste")
             }
         }
         binding = ActivityConnectBinBinding.inflate(layoutInflater)

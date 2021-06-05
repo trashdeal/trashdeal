@@ -48,15 +48,21 @@ class UseBin : AppCompatActivity() {
                     ref.child("Status").setValue("end")
                     ref.child("BinLid").setValue("close")
                     timer.cancel()
-                    startActivity(Intent(applicationContext, Facts::class.java).apply {
-                        putExtra("userBin", userBin)
-                        putExtra("binType", binType)
-                        putExtra("wasteType", intent.getStringExtra("wasteType").toString())
-                        putExtra("oldWeight", oldWeight.toString())
-                    })
-                    finish() //this will cancel the timer of the system
+                    ref.child("Weight").get().addOnSuccessListener {
+                        Log.i("TAG", "Got value ${it.value}")
+                        oldWeight = it.value.toString().toDouble()
+                        startActivity(Intent(applicationContext, Facts::class.java).apply {
+                            putExtra("userBin", userBin)
+                            putExtra("binType", binType)
+                            putExtra("wasteType", intent.getStringExtra("wasteType").toString())
+                            putExtra("oldWeight", oldWeight.toString())
+                        })
+                        finish()
+                    }.addOnFailureListener{
+                        Log.e("TAG", "Error getting data", it)
+                    }
                 }
-            }, 30 * 1000)
+            }, 60 * 1000)
         }
         startTimer()
         binControlBtn.setOnClickListener{

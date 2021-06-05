@@ -44,7 +44,7 @@ class AddBins : AppCompatActivity() {
         val addBtn = findViewById<Button>(R.id.addBinBtn)
         addBtn.setOnClickListener{
             if(binName.text.toString().isEmpty() || binLocationlatitude.text.toString().isEmpty() ||
-                binLocationlongitude.text.toString().isEmpty()|| binAddress.text.toString().isEmpty() ){
+                binLocationlongitude.text.toString().isEmpty() || binAddress.text.toString().isEmpty() ){
                 Toast.makeText(this,"Empty Fields", Toast.LENGTH_SHORT).show()
             }else{
                 val binLoc = hashMapOf("Bin Name" to binName.text.toString(),
@@ -66,7 +66,7 @@ class AddBins : AppCompatActivity() {
                         addRTBin("EWaste")
                         addRTBin("DryWaste")
                         addRTBin("WetWaste")
-                        Toast.makeText(this,"Bin ${binName.text.toString()} Added!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Bin ${binName.text} Added!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, ManageBins::class.java))
                         finish()
                     } else {
@@ -94,9 +94,7 @@ class AddBins : AppCompatActivity() {
         ){
             return true
         }
-
         return false
-
     }
     private fun RequestPermission(){
         //this function will allows us to tell the user to requesut the necessary permsiion if they are not garented
