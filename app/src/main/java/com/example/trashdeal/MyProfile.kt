@@ -2,20 +2,31 @@ package com.example.trashdeal
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityMyProfileBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.mikhaellopez.circularimageview.CircularImageView
 
 
 class MyProfile : AppCompatActivity() {
     lateinit var binding: ActivityMyProfileBinding
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var fStore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        fStore = FirebaseFirestore.getInstance()
         binding = ActivityMyProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.title = "My Profile"
@@ -55,7 +66,34 @@ class MyProfile : AppCompatActivity() {
                 true
             }
         val circularImageView = findViewById<CircularImageView>(R.id.circularImageView)
-
+        val fName = findViewById<EditText>(R.id.editText2)
+        val lName = findViewById<EditText>(R.id.editText)
+        val email = findViewById<EditText>(R.id.editText3)
+        val doc: DocumentReference = fStore.collection("user").document(auth.currentUser.uid)
+        doc.get().addOnSuccessListener {
+            fName.setText(it.data?.get("FirstName").toString())
+            lName.setText(it.data?.get("LastName").toString())
+            email.setText(it.data?.get("Email").toString())
+        }
+        val saveBtn = findViewById<Button>(R.id.save)
+        saveBtn.setOnClickListener{
+            if (fName.text.toString().isEmpty() || lName.text.toString().isEmpty() || email.text.toString().isEmpty()) {
+                Toast.makeText(this,"Empty Fields", Toast.LENGTH_SHORT).show()
+            } else {
+                val user = hashMapOf("FirstName" to fName.text.toString(),"LastName" to lName.text.toString(),"Email" to email.text.toString())
+                doc.set(user, SetOptions.merge()).addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this,"Saved Changes", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        finish()
+                    } else {
+                        if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(this,"Couldn't Add Info", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

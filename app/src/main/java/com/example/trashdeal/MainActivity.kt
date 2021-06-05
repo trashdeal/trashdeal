@@ -4,6 +4,7 @@ package com.example.trashdeal
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
@@ -76,13 +77,15 @@ class MainActivity : AppCompatActivity() {
                         val trashHistory = findViewById<Button>(R.id.buttonhistory)
                         val binNearMeBtn = findViewById<Button>(R.id.buttonbinsnear)
                         val user = it.data
+                        Log.d("TAGG",user?.get("FirstName").toString())
+//                        username.text = user?.get("FirstName").toString()
                         doc.get().addOnSuccessListener { points.text = "+"+user?.get("Points").toString()+"xp" }
                         useBin.setOnClickListener{
                             if(!user?.get("DefaultBin")?.equals("")!!){
                                 startActivity(Intent(applicationContext, ConnectBin::class.java).apply {
                                     putExtra("userBin", user?.get("DefaultBin").toString())
                                 })
-                            }else{
+                            } else {
                                 startActivity(Intent(applicationContext, BinsNearMe::class.java))
                             }
                         }
