@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.660" />
 
     <EditText
         android:id="@+id/phone"
@@ -71,58 +71,42 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ccp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691">
+        app:layout_constraintVertical_bias="0.665">
 
     </EditText>
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:text="on this mobile number"
-        android:textAlignment="center"
-        android:textColor="#46E0A2"
-        android:textSize="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView1"
-        app:layout_constraintVertical_bias="0.015" />
-
-    <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="We will send you an OTP verification"
+        android:text="We will send you an OTP verification on this number"
         android:textAlignment="center"
         android:textColor="#46E0A2"
-        android:textSize="19dp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.523" />
 
     <Button
         android:id="@+id/getOtpBtn"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@drawable/green_button"
-        android:text="GET OTP"
+        android:text="Get OTP"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintVertical_bias="0.821" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
