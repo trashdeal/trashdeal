@@ -63,7 +63,7 @@ class MoreInformation : AppCompatActivity() {
         val txtcol6 = findViewById<TextView>(R.id.txtcol6)
         val color: Int = getResources().getColor(R.color.colorPrimaryDark)
         val text1 = "Waste management has been a growing corncern in India as we are accumulated tons of waste every single day with no proper sytem to monitor this waste."
-        val text2 = "TrashDeal is a small project done by the students of Shrimati Paravati Chowgule College to come up with a solution for such an issue."
+        val text2 = "TrashDeal is a small project done by the students of Shrimati Paravatibai Chowgule College to come up with a solution for such an issue."
         val text3 = "In this project, the user places trash in the bin and based on the weight and type of trash a certain amount of points are given to the user"
         val text4 = "These points are then converted into money and transferred into user's bank account."
         val text5 = "The trash collected is sent to industries for either manure manufacturing or for e-waste collection based on the type of waste delivered by the user."
