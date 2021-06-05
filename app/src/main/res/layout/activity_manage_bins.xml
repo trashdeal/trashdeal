@@ -4,17 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".ManageBins">
 
     <Button
         android:id="@+id/addBinsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="1dp"
-        android:text="ADD BIN +"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        android:background="@drawable/green_button"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Add Bin"
+        android:drawableRight="@drawable/ic_baseline_add_24"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/listView3"
         app:layout_constraintEnd_toEndOf="@+id/searchBin"
+        app:layout_constraintStart_toStartOf="@+id/searchBin"
         app:layout_constraintTop_toBottomOf="@+id/searchBin" />
 
     <ListView
@@ -31,12 +41,18 @@
 
     <SearchView
         android:id="@+id/searchBin"
-        android:layout_width="360dp"
-        android:layout_height="32dp"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
         android:layout_marginStart="20dp"
+        app:layout_goneMarginEnd="20dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/edit_text"
+        android:textAlignment="center"
+        android:outlineSpotShadowColor="@color/colorPrimaryDark"
+        android:searchHintIcon="@color/colorPrimaryDark"
         android:layout_marginBottom="7dp"
+        android:textColorLink="#46E0A2"
         app:layout_constraintBottom_toTopOf="@+id/addBinsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
