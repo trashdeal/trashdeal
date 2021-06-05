@@ -49,7 +49,7 @@ class adminHome : AppCompatActivity() {
                         builder.setPositiveButton("YES") { _, _ ->
                             auth.signOut()
                             startActivity(Intent(this, MobnoRegister::class.java))
-                            finish()
+                            this.finish()
                         }
                         builder.setNegativeButton(
                             "NO"

@@ -43,7 +43,7 @@ class EditPointsAdapter(private val context: Context,
         rowView = LayoutInflater.from(context).inflate(R.layout.edit_points_row, parent, false)
         rowView.findViewById<TextView>(R.id.weightText).text = dataSource[position].waste_weight
         rowView.findViewById<TextView>(R.id.typeText).text = dataSource[position].waste_type
-        rowView.findViewById<TextView>(R.id.pointsText).text = dataSource[position].waste_points.toString()
+        rowView.findViewById<TextView>(R.id.pointsText).text = dataSource[position].waste_points.toString()+"xp"
         val editBtn = rowView.findViewById<Button>(R.id.editPointsBtn)
         editBtn.setOnClickListener{
             val builder = AlertDialog.Builder(context)

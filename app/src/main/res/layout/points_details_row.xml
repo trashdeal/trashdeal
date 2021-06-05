@@ -138,25 +138,7 @@
                     app:layout_constraintTop_toTopOf="@+id/manageBin"
                     app:layout_constraintVertical_bias="0.712" />
 
-                <Button
-                    android:id="@+id/editPointsBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/typeText"
-                    android:layout_marginEnd="7dp"
-                    android:background="@drawable/button_bg_rounded_corners"
-                    android:drawableRight="@drawable/edit_user_icon"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:text="Edit Points"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.94"
-                    app:layout_constraintStart_toEndOf="@+id/pointsText"
-                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -167,8 +149,3 @@
 
 
 </RelativeLayout>
-
-
-
-
-
