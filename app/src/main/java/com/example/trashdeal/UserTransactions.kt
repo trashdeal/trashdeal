@@ -2,22 +2,27 @@ package com.example.trashdeal
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.ListView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.trashdeal.databinding.ActivityUserTransactionsBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import java.text.SimpleDateFormat
 
 class UserTransactions : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var binding: ActivityUserTransactionsBinding
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserTransactionsBinding.inflate(layoutInflater)
@@ -62,14 +67,17 @@ class UserTransactions : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
         val gridview = findViewById<ListView>(R.id.listView)
-        val doc: CollectionReference = fStore.collection("user").document(auth.currentUser.uid).collection(
-            "transactions"
-        )
+        val doc = fStore.collection("user").document(auth.currentUser.uid).collection("transactions").orderBy("Date", Query.Direction.DESCENDING)
+        Log.d("TAG", "Ass: ${doc.orderBy("Date", Query.Direction.ASCENDING)}")
+        Log.d("TAG", "Dss: ${doc.orderBy("Date", Query.Direction.DESCENDING)}")
         doc.get().addOnSuccessListener {
             val transactions : ArrayList<Transaction> = ArrayList()
             for(document in it){
+                var simpleDateFormat = SimpleDateFormat("LLL dd, yy h:mm a")
+                var timestamp: Timestamp = document.data["Date"] as Timestamp
+                var dateTime = simpleDateFormat.format(timestamp.toDate())
                 val transaction = Transaction(
-                    document.data["Date"].toString(),
+                    dateTime,
                     document.data["Bin"].toString(),
                     document.data["WasteWeight"] as Double,
                     document.data["WasteType"].toString(),
@@ -77,7 +85,6 @@ class UserTransactions : AppCompatActivity() {
                 )
                 transactions.add(transaction)
             }
-            Log.d("TAG", "Transactions List: $transactions")
             val adapter = TransactionAdapter(this, transactions)
             gridview.adapter = adapter
         }

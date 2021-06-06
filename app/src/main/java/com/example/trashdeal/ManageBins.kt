@@ -31,7 +31,7 @@ class ManageBins : AppCompatActivity() {
                 val binName = document.data["Bin Name"].toString()
                 binLocation.latitude = document.data["Latitude"] as Double
                 binLocation.longitude = document.data["Longitude"] as Double
-                val currentBin = BinLocation(document.id, binName,getCityName(binLocation.latitude, binLocation.longitude),"")
+                val currentBin = BinLocation(document.id, binName,getCityName(binLocation.latitude, binLocation.longitude),0.0)
                 allBins.add(currentBin)
             }
             val adapter = ManageBinsAdapter(this, allBins)

@@ -36,7 +36,7 @@ class TransactionAdapter(private val context: Context,
         val wasteType = rowView.findViewById<TextView>(R.id.wasteType)
         val points = rowView.findViewById<TextView>(R.id.pointsEarned)
         val bin = rowView.findViewById<TextView>(R.id.binName)
-        date.text = dataSource[position].date
+        date.text = dataSource[position].date.toString()
         wasteWeight.text = dataSource[position].wasteWeight.toString()+"Kg"
         wasteType.text = dataSource[position].wasteType
         points.text = "+${dataSource[position].points.toString()}xp"

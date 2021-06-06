@@ -15,7 +15,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import java.text.SimpleDateFormat
 import java.util.*
 
 class Facts : AppCompatActivity() {
@@ -81,10 +80,8 @@ class Facts : AppCompatActivity() {
                                         pointsEarned + it.data?.get("Points").toString().toInt()
                                     doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
                                     var calendar = Calendar.getInstance()
-                                    var simpleDateFormat = SimpleDateFormat("LLL dd,yyyy")
-                                    var dateTime = simpleDateFormat.format(calendar.time).toString()
                                     var userTransaction = hashMapOf(
-                                        "Date" to dateTime,
+                                        "Date" to calendar.time,
                                         "PointsEarned" to pointsEarned,
                                         "WasteType" to wasteType,
                                         "Bin" to userBin,

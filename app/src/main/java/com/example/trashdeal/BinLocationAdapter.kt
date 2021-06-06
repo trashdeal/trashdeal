@@ -35,7 +35,7 @@ class BinLocationAdapter(private val context: Context,
         val binDistance = rowView.findViewById<TextView>(R.id.binDistance)
         binName.text = dataSource[position].binName
         binAddress.text = dataSource[position].binAddress
-        binDistance.text = dataSource[position].binDistance+"km away"
+        binDistance.text = dataSource[position].binDistance.toString()+"km away"
         return rowView
     }
 }

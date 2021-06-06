@@ -58,12 +58,13 @@ class BinsNearMe : AppCompatActivity() {
                     binLocation.longitude = document.data["Longitude"] as Double
                     var results = FloatArray(10)
                     Location.distanceBetween(myLocation.latitude,myLocation.longitude,binLocation.latitude, binLocation.longitude ,results)
-                    val distance = String.format("%.1f",results[0]/1000)
-                    if(distance.toFloat() <= distanceSet){
+                    val distance = String.format("%.1f",results[0]/1000).toDouble()
+                    if(distance <= distanceSet){
                         val currentBin = BinLocation(document.id, document.data["Bin Name"].toString(),getCityName(binLocation.latitude, binLocation.longitude),distance)
                         binList.add(currentBin)
                     }
                 }
+                binList.sortBy { it.binDistance }
                 val adapter = BinLocationAdapter(this, binList)
                 listview.adapter = adapter
                 listview.onItemClickListener =
