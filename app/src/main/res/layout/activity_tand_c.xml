@@ -79,6 +79,7 @@
                 android:text="@string/tandc"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:textColor="#000"
                 />
@@ -86,11 +87,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc1" />
             <TextView
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:paddingRight="5dp"
@@ -101,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc3" />
@@ -109,6 +113,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:text="@string/tandc4" />
             <TextView
@@ -117,6 +122,7 @@
                 android:textColor="#000"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc5" />
             <TextView
@@ -124,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc6" />
             <TextView
@@ -131,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc7" />
             <TextView
@@ -139,12 +147,14 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:text="@string/tandc8" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc9" />
@@ -152,6 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc10" />
@@ -160,6 +171,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc11" />
@@ -167,12 +179,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc12" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -182,6 +196,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:text="@string/tandc14" />
@@ -196,6 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
+                android:gravity="center"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -205,12 +221,14 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc17" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc18" />
@@ -218,6 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc19" />
@@ -225,12 +244,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc20" />
             <TextView
                 android:layout_width="match_parent"
                 android:textColor="#000"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
@@ -240,6 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc22" />
@@ -248,11 +270,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc23" />
             <TextView
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
@@ -264,11 +288,13 @@
                 android:textColor="#000"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc25" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -276,6 +302,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -287,6 +314,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:text="@string/tandc28" />
 
             <LinearLayout

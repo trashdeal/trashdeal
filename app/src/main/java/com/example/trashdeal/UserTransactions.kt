@@ -13,7 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 
-class UserTransactions : AppCompatActivity() {
+class 
+
+UserTransactions : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var binding: ActivityUserTransactionsBinding
     private lateinit var fStore: FirebaseFirestore

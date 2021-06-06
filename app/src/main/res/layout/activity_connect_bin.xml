@@ -51,14 +51,15 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#000"
-        android:textSize="27sp"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.004" />
 
     <Button
         android:id="@+id/getLocationBtn"
@@ -110,21 +111,21 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/thistory">
 
+                    <!--                        I removed the icon. it'll be added from the backend -->
+
+
                     <ImageView
                         android:id="@+id/pbinicon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true" />
-<!--                        I removed the icon. it'll be added from the backend -->
-
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/pbinicon"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:text="Plastic"
                         android:textColor="@color/colorPrimaryDark"
                         android:textColorHighlight="@color/colorPrimary"
@@ -155,18 +156,16 @@
 
                     <ImageView
                         android:id="@+id/ewasteicon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ewasteicon"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-
-                        android:layout_marginBottom="10dp"
                         android:text="E-waste"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="16sp"></TextView>
@@ -206,17 +205,16 @@
 
                     <ImageView
                         android:id="@+id/wetwasteicon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/wetwasteicon"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:text="Wet waste"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="16sp"></TextView>
@@ -245,17 +243,16 @@
 
                     <ImageView
                         android:id="@+id/drywasteicon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/drywasteicon"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:text="Dry waste"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="16sp"></TextView>

@@ -25,6 +25,7 @@ class Facts : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facts)
+        supportActionBar!!.title = "Facts"
         val spinner = findViewById<ProgressBar>(R.id.progressBar1)
         spinner.setVisibility(View.VISIBLE);
         val factView = findViewById<TextView>(R.id.factView)

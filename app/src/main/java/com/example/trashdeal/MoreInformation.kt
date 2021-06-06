@@ -76,7 +76,7 @@ class MoreInformation : AppCompatActivity() {
         val s6 = SpannableString(text6)
         val ssgreen = ForegroundColorSpan(color)
         s1.setSpan(ssgreen, 0, 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        s2.setSpan(ssgreen, 53, 87, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s2.setSpan(ssgreen, 53, 90, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         s3.setSpan(ssgreen, 101, 118, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         s4.setSpan(ssgreen, 6, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         s5.setSpan(ssgreen, 53, 99, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)

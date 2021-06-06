@@ -24,8 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tandc"
-                android:paddingRight="5dp"
-                android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:textSize="17dp"
                 android:textStyle="bold"
@@ -37,6 +36,7 @@
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc1" />
@@ -47,6 +47,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:text="@string/tandc2"
                 android:textStyle="bold"
                 android:textSize="17dp"
@@ -56,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
@@ -69,15 +71,15 @@
                 android:textColor="#525252"
                 android:paddingTop="10dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/tandc4" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
-                android:paddingRight="5dp"
+                android:gravity="center"
                 android:textSize="17dp"
-                android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc5" />
             <TextView
@@ -87,6 +89,7 @@
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc6" />
             <TextView
@@ -96,6 +99,7 @@
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc7" />
             <TextView
@@ -105,6 +109,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:textSize="17dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:layout_height="wrap_content"
                 android:text="@string/tandc8" />
@@ -116,11 +121,13 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:text="@string/tandc9" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:paddingLeft="10dp"
@@ -133,6 +140,7 @@
                 android:textStyle="bold"
                 android:paddingRight="5dp"
                 android:textSize="17dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc11" />
@@ -143,6 +151,7 @@
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:text="@string/tandc12" />
             <TextView
@@ -158,6 +167,7 @@
                 android:layout_width="match_parent"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
@@ -168,6 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:paddingLeft="10dp"
@@ -179,6 +190,7 @@
                 android:textSize="17dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -187,6 +199,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:textStyle="bold"
@@ -196,6 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
@@ -207,6 +221,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:text="@string/tandc19" />
@@ -214,6 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
@@ -225,6 +241,7 @@
                 android:textSize="17dp"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -235,6 +252,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:textColor="#525252"
                 android:paddingTop="10dp"
                 android:text="@string/tandc22" />
@@ -245,6 +263,7 @@
                 android:paddingRight="5dp"
                 android:textSize="17dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/tandc23" />
@@ -253,6 +272,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
+                android:gravity="center"
                 android:paddingTop="10dp"
                 android:textStyle="bold"
                 android:textColor="#525252"
@@ -263,6 +283,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:paddingRight="5dp"
                 android:textSize="17dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -273,11 +294,13 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#525252"
                 android:text="@string/tandc26" />
             <TextView
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
@@ -292,6 +315,7 @@
                 android:paddingRight="5dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:gravity="center"
                 android:paddingBottom="10dp"
                 android:text="@string/tandc28"
                 android:textStyle="bold"

@@ -48,7 +48,7 @@ class EditPointsAdapter(private val context: Context,
         editBtn.setOnClickListener{
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Edit Points")
-            builder.setIcon(R.drawable.logout_icon)
+            builder.setIcon(R.drawable.edit_user_icon)
             builder.setMessage("Enter the updated points for ${dataSource[position].waste_type}")
             val input = EditText(context)
             input.inputType =
