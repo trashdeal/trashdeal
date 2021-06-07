@@ -1,5 +1,6 @@
 package com.example.trashdeal
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,16 @@ class FullBinsAdapter (private val context: Context,
         binAddress.text = dataSource[position].binAddress
         binType.text = dataSource[position].binType
         notifyBtn.setOnClickListener{
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Notify Collector")
+            builder.setIcon(R.drawable.edit_user_icon)
+            builder.setMessage("Send notification to collector to collect the waste from bin ${dataSource[position].binType}")
+            builder.setPositiveButton("YES") { dialog, which ->
 
+            }
+            builder.setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss() }
+            builder.show()
         }
         return rowView
     }

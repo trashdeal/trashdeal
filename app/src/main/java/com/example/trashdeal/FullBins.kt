@@ -51,7 +51,6 @@ class FullBins : AppCompatActivity() {
         var countryName = ""
         var geoCoder = Geocoder(this, Locale.getDefault())
         var Adress = geoCoder.getFromLocation(lat,long,3)
-
         cityName = Adress.get(0).locality
         countryName = Adress.get(0).countryName
         Log.d("Debug:", "Your City: $cityName ; your Country $countryName")
