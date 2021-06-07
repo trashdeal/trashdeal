@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.ListView
 import androidx.annotation.RequiresApi
@@ -68,8 +67,6 @@ class UserTransactions : AppCompatActivity() {
         fStore = FirebaseFirestore.getInstance()
         val gridview = findViewById<ListView>(R.id.listView)
         val doc = fStore.collection("user").document(auth.currentUser.uid).collection("transactions").orderBy("Date", Query.Direction.DESCENDING)
-        Log.d("TAG", "Ass: ${doc.orderBy("Date", Query.Direction.ASCENDING)}")
-        Log.d("TAG", "Dss: ${doc.orderBy("Date", Query.Direction.DESCENDING)}")
         doc.get().addOnSuccessListener {
             val transactions : ArrayList<Transaction> = ArrayList()
             for(document in it){
