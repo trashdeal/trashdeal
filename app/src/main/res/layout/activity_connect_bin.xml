@@ -15,7 +15,6 @@
     android:layout_height="match_parent">
 
 
-
     <TextView
         android:id="@+id/txtcol2"
         android:layout_width="wrap_content"
@@ -27,10 +26,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -43,38 +42,39 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <TextView
         android:id="@+id/binName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:gravity="center"
         android:textColor="#000"
         android:textSize="20sp"
-        android:layout_marginTop="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <Button
         android:id="@+id/getLocationBtn"
-        android:layout_width="220dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/green_button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="GET DIRECTIONS TO BIN"
         android:textColor="#fff"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199"
+        app:layout_constraintVertical_bias="0.171"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -110,9 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/thistory">
-
-                    <!--                        I removed the icon. it'll be added from the backend -->
-
+                    
 
                     <ImageView
                         android:id="@+id/pbinicon"

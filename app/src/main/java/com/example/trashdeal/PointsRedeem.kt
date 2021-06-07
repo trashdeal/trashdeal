@@ -60,8 +60,20 @@ class PointsRedeem : AppCompatActivity() {
                 true
             }
         findViewById<TextView>(R.id.ptsdisplay).text = intent.getStringExtra("redeemPoints").toString()
-        val redeem = findViewById<Button>(R.id.redeemptsbtn)
+        val redeem = findViewById<Button>(R.id.redeemptsBtn)
         redeem.setOnClickListener{
+            Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+        }
+        val bank = findViewById<Button>(R.id.bankdetailsBtn)
+        bank.setOnClickListener{
+            Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+        }
+        val history = findViewById<Button>(R.id.historyBtn)
+        history.setOnClickListener{
+            Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
+        }
+        val friend = findViewById<Button>(R.id.friendBtn)
+        friend.setOnClickListener{
             Toast.makeText(applicationContext, "Work in Progress", Toast.LENGTH_SHORT).show()
         }
     }

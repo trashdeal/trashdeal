@@ -13,17 +13,18 @@
     android:layout_marginStart="25dp"
     android:layout_marginEnd="25dp">
 
+
     <ImageView
         android:id="@+id/welcomegif"
-        android:layout_width="257dp"
-        android:layout_height="160dp"
+        android:layout_width="242dp"
+        android:layout_height="168dp"
         android:src="@drawable/redeempointsicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="250dp"
@@ -37,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.500">
+        app:layout_constraintVertical_bias="0.370">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -68,29 +69,184 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.787" />
+                app:layout_constraintVertical_bias="0.78" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 
-        app:layout_constraintVertical_bias="0.611" />
+    <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.90">
 
-    <Button
-        android:id="@+id/redeemptsbtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/green_button"
-        android:text="REDEEM POINTS"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="#fff"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
 
-    </Button>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rpoints">
+
+                            <!--                        I removed the icon. it'll be added from the backend -->
+
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Redeem Points"
+                                android:textColor="#fff"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:textColorHighlight="@color/colorPrimary"
+                                android:textSize="16sp"></TextView>
+
+                            <Button
+                                android:id="@+id/redeemptsBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:gravity="center"
+                        app:cardCornerRadius="10dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rpoints">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="Add Bank Details"
+                                android:textColor="#fff"
+                                android:textStyle="bold"
+                                android:textSize="16sp"></TextView>
+
+                            <Button
+                                android:id="@+id/bankdetailsBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rpoints">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/wetwasteicon"
+                                android:text="Redeem istory"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:textColor="#fff"
+                                android:textSize="16sp"></TextView>
+
+                            <Button
+                                android:id="@+id/historyBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:cardCornerRadius="10dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rpoints">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Send Friend"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:textColor="#fff"
+                                android:textSize="16sp"></TextView>
+
+                            <Button
+                                android:id="@+id/friendBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

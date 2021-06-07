@@ -52,7 +52,7 @@
     <Button
         android:id="@+id/verifyBtn"
         android:layout_width="260dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/green_button"
         android:text="VERIFY and proceed"
         android:textColor="#FFFFFF"
@@ -66,7 +66,7 @@
 
     <EditText
         android:id="@+id/otp"
-        android:layout_width="186dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -76,7 +76,7 @@
         android:inputType="number"
         android:textColor="#000"
         android:textColorLink="#46E0A2"
-        android:textSize="18dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,12 +87,12 @@
 
     <TextView
         android:id="@+id/mobno"
-        android:layout_width="287dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Verify"
         android:textColor="#000"
-        android:textSize="18dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
     <Button
         android:id="@+id/resendBtn"
         android:layout_width="160dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:background="@drawable/button_bg_rounded_corners"
         android:text="resend OTP"

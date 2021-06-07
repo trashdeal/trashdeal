@@ -10,7 +10,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     android:layout_marginLeft="10dp"
     android:layout_marginTop="25dp"
     android:layout_marginRight="10dp"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="25dp"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
@@ -28,17 +28,64 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
             <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:textStyle="italic"
+                android:text="Bin Name: "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.185" />
+
+            <TextView
                 android:id="@+id/binName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="18dp"
                 android:text="TestBin"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/binType"
-                app:layout_constraintHorizontal_chainStyle="packed"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.189" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Waste Type: "
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.513" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: "
+                android:textColor="#000"
+                android:textStyle="italic"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.828" />
 
             <TextView
                 android:id="@+id/binType"
@@ -46,32 +93,51 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="11dp"
                 android:text="PlasticBin"
-                android:textSize="18sp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/binAddress"
-                app:layout_constraintEnd_toStartOf="@+id/notifyBtn"
-                app:layout_constraintStart_toEndOf="@+id/binName" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.934" />
 
             <TextView
                 android:id="@+id/binAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="22dp"
                 android:text="Assolna, Margao"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/notifyBtn"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/binName" />
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.796" />
 
             <Button
                 android:id="@+id/notifyBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="7dp"
+                android:background="@drawable/green_button"
+                android:drawableRight="@drawable/notify"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="Notify Collector"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/binAddress"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.947"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.288" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
