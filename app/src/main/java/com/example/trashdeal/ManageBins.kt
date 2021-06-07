@@ -1,14 +1,20 @@
 package com.example.trashdeal
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ListView
 import android.widget.SearchView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.trashdeal.databinding.ActivityAdminHomeBinding
+import com.example.trashdeal.databinding.ActivityEditPointsBinding
+import com.example.trashdeal.databinding.ActivityManageBinsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -17,11 +23,46 @@ import java.util.*
 class ManageBins : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var binding: ActivityManageBinsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_manage_bins)
+        binding = ActivityManageBinsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar!!.title = "Manage Bins"
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            R.string.open,
+            R.string.close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.naView2
+            .setNavigationItemSelectedListener {
+                when(it.itemId){
+                    R.id.miItem11 -> startActivity(Intent(this, adminHome::class.java))
+                    R.id.miItem77 -> {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Logout")
+                        builder.setIcon(R.drawable.logout_icon)
+                        builder.setMessage("Are you sure you want to Logout?")
+                        builder.setPositiveButton("YES") { _, _ ->
+                            auth.signOut()
+                            startActivity(Intent(this, MobnoRegister::class.java))
+                            this.finish()
+                        }
+                        builder.setNegativeButton(
+                            "NO"
+                        ) { dialog, _ -> dialog.dismiss() }
+                        builder.show()
+                    }
+                }
+                true
+            }
         val listview = findViewById<ListView>(R.id.listView3)
         val doc: CollectionReference = fStore.collection("binLocation")
         val allBins : ArrayList<BinLocation> = ArrayList()
@@ -67,5 +108,11 @@ class ManageBins : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, adminHome::class.java))
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

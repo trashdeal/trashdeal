@@ -65,7 +65,7 @@ class ConnectBin : AppCompatActivity() {
                                 binIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
                             }
                             binType.WasteLevel in 31..50 -> {
-                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostlow))
+                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostempty))
                             }
                             binType.WasteLevel in 51..89 -> {
                                 binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))

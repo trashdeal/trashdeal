@@ -28,6 +28,7 @@ class UseBin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUseBinBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar!!.title = "Use Bin"
         val binControlBtn = findViewById<ToggleButton>(R.id.binControl)
         val binNameView = findViewById<TextView>(R.id.binName)
         auth = FirebaseAuth.getInstance()
@@ -82,7 +83,7 @@ class UseBin : AppCompatActivity() {
                 val builder = AlertDialog.Builder(this)
                 builder.setCancelable(false)
                 builder.setTitle("Confirm")
-                builder.setIcon(R.drawable.logout_icon)
+                builder.setIcon(R.drawable.disconnectimage)
                 builder.setMessage("Close bin and disconnect")
                 builder.setPositiveButton("YES") { dialog, which ->
                     timer.cancel()

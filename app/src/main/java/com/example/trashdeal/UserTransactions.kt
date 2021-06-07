@@ -16,7 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
 
-class UserTransactions : AppCompatActivity() {
+class 
+
+UserTransactions : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var binding: ActivityUserTransactionsBinding
     private lateinit var fStore: FirebaseFirestore

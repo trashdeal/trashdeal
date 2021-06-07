@@ -32,16 +32,11 @@ class adminHome : AppCompatActivity() {
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.naView
+        binding.naView2
             .setNavigationItemSelectedListener {
                 when(it.itemId){
-                    R.id.miItem1 -> startActivity(Intent(this, MainActivity::class.java))
-                    R.id.miItem2 -> startActivity(Intent(this, MyProfile::class.java))
-                    R.id.miItem4 -> startActivity(Intent(this, PointsDetails::class.java))
-                    R.id.miItem6 -> startActivity(Intent(this, TandC2::class.java))
-                    R.id.miItem3 -> startActivity(Intent(this, Help::class.java))
-                    R.id.miItem8 -> startActivity(Intent(this, MoreInformation::class.java))
-                    R.id.miItem7 -> {
+                    R.id.miItem11 -> startActivity(Intent(this, adminHome::class.java))
+                    R.id.miItem77 -> {
                         val builder = AlertDialog.Builder(this)
                         builder.setTitle("Logout")
                         builder.setIcon(R.drawable.logout_icon)

@@ -37,7 +37,7 @@ class ManageBinsAdapter(private val context: Context,
         deleteBin.setOnClickListener{
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Delete Bin")
-            builder.setIcon(R.drawable.logout_icon)
+            builder.setIcon(R.drawable.deleteicon)
             builder.setMessage("Are you sure you want to delete bin ${dataSource[position].binName}?")
             builder.setPositiveButton("YES") { dialog, which ->
                 Toast.makeText(context, "Deleting Bin ${dataSource[position].binName}..", Toast.LENGTH_SHORT)

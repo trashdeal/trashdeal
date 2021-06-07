@@ -17,13 +17,13 @@
         android:id="@+id/welcomegif"
         android:layout_width="257dp"
         android:layout_height="160dp"
-        android:src="@drawable/redeemptsimg"
+        android:src="@drawable/redeempointsicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="250dp"
@@ -85,10 +85,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" >
+        app:layout_constraintVertical_bias="0.786">
 
     </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
