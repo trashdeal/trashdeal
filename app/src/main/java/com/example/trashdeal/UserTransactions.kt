@@ -67,7 +67,7 @@ UserTransactions : AppCompatActivity() {
             }
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
-        val gridview = findViewById<ListView>(R.id.listView)
+        val gridview = findViewById<ListView>(R.id.listview)
         val doc = fStore.collection("user").document(auth.currentUser.uid).collection("transactions").orderBy("Date", Query.Direction.DESCENDING)
         doc.get().addOnSuccessListener {
             val transactions : ArrayList<Transaction> = ArrayList()

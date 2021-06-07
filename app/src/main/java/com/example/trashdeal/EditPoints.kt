@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.trashdeal.databinding.ActivityAdminHomeBinding
 import com.example.trashdeal.databinding.ActivityEditPointsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -57,7 +56,7 @@ class EditPoints : AppCompatActivity() {
                 }
                 true
             }
-        val listview = findViewById<ListView>(R.id.listView)
+        val listview = findViewById<ListView>(R.id.listview)
         val doc: CollectionReference = fStore.collection("trash_value")
         doc.get().addOnSuccessListener {
             val pointsList : ArrayList<Trash_Value> = ArrayList()
