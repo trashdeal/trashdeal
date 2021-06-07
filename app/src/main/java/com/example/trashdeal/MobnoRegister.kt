@@ -56,13 +56,14 @@ class MobnoRegister : AppCompatActivity() {
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Couldn't Sent a OTP on this number", Toast.LENGTH_LONG).show()
             }
 
             override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
+                Toast.makeText(applicationContext, "Sending OTP...", Toast.LENGTH_LONG).show()
                 val intent = Intent(applicationContext, OtpRegister::class.java).apply {
                     putExtra("Phone", mobNo)
                     putExtra("otp",storedVerificationId)

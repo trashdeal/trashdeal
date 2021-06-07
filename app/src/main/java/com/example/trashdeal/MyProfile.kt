@@ -94,6 +94,11 @@ class MyProfile : AppCompatActivity() {
                 }
             }
         }
+        val cancelBtn = findViewById<Button>(R.id.cancel)
+        cancelBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+            finish()
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

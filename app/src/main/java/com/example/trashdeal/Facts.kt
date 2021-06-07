@@ -48,11 +48,11 @@ class Facts : AppCompatActivity() {
             val fact = it.data?.get(index).toString()
             factView.text = fact
             if(fact.length in 0..30){
-                time = 3000
+                time = 0
             }else if(fact.length in 31..90){
-                time = 5000
+                time = 3000
             }else if(fact.length in 91..200){
-                time = 6000
+                time = 4000
             }
             var flag = 1
             var userBin = intent.getStringExtra("userBin").toString()
