@@ -63,9 +63,15 @@ class adminHome : AppCompatActivity() {
         manageBinBtn.setOnClickListener{
             startActivity(Intent(applicationContext, ManageBins::class.java))
         }
+
         val fullBinsBtn = findViewById<Button>(R.id.fullBinsBtn)
         fullBinsBtn.setOnClickListener{
             startActivity(Intent(applicationContext, FullBins::class.java))
+        }
+
+        val addCollectorBtn = findViewById<Button>(R.id.addCollectorBtn)
+        addCollectorBtn.setOnClickListener{
+            startActivity(Intent(applicationContext, AddCollector::class.java))
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCollector">
+
+    <EditText
+        android:id="@+id/cName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="207dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Full Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/cEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/cName"
+        app:layout_constraintTop_toBottomOf="@+id/cName" />
+
+    <EditText
+        android:id="@+id/cPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="@+id/cEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/cEmailAddress" />
+
+    <EditText
+        android:id="@+id/cAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:hint="Postal Address"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="@+id/cPhone"
+        app:layout_constraintTop_toBottomOf="@+id/cPhone" />
+
+    <Button
+        android:id="@+id/registerCollectorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="10dp"
+        android:text="REGISTER COLLECTOR"
+        app:layout_constraintStart_toStartOf="@+id/cAddress"
+        app:layout_constraintTop_toBottomOf="@+id/cAddress" />
+</androidx.constraintlayout.widget.ConstraintLayout>

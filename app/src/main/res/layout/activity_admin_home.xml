@@ -176,13 +176,13 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="SELL WASTE"
+                            android:text="ADD TRASH COLLECTOR"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="16sp"
                             android:textStyle="bold"></TextView>
 
                         <Button
-                            android:id="@+id/sellWaste"
+                            android:id="@+id/addCollectorBtn"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/dashboard_button"></Button>
