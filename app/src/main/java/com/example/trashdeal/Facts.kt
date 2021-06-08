@@ -73,22 +73,25 @@ class Facts : AppCompatActivity() {
                             Log.i("TAG", "Got new value ${it.value}")
                             newWeight = it.value.toString().toDouble()
                             userWeight = newWeight - oldWeight
-                            var pointsEarned = (userWeight * 10).toInt() //need to change
-                            Log.i("TAG", "Date ${Calendar.getInstance().time}")
-                            if (pointsEarned != 0) {
-                                doc.get().addOnSuccessListener {
-                                    var userPoints =
-                                        pointsEarned + it.data?.get("Points").toString().toInt()
-                                    doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
-                                    var calendar = Calendar.getInstance()
-                                    var userTransaction = hashMapOf(
-                                        "Date" to calendar.time,
-                                        "PointsEarned" to pointsEarned,
-                                        "WasteType" to wasteType,
-                                        "Bin" to userBin,
-                                        "WasteWeight" to String.format("%.2f",userWeight).toDouble()
-                                    )
-                                    doc.collection("transactions").add(userTransaction)
+                            val doc1 = fStore.collection("trash_value").whereEqualTo("waste_type",wasteType)
+                            doc1.get().addOnSuccessListener {
+                                val trash_value = it.documents[0].data?.get("waste_points").toString().toInt()
+                                var pointsEarned = (userWeight * trash_value).toInt()
+                                if (pointsEarned != 0) {
+                                    doc.get().addOnSuccessListener {
+                                        var userPoints =
+                                            pointsEarned + it.data?.get("Points").toString().toInt()
+                                        doc.set(hashMapOf("Points" to userPoints), SetOptions.merge())
+                                        var calendar = Calendar.getInstance()
+                                        var userTransaction = hashMapOf(
+                                            "Date" to calendar.time,
+                                            "PointsEarned" to pointsEarned,
+                                            "WasteType" to wasteType,
+                                            "Bin" to userBin,
+                                            "WasteWeight" to String.format("%.2f",userWeight).toDouble()
+                                        )
+                                        doc.collection("transactions").add(userTransaction)
+                                    }
                                 }
                             }
                             ref.child("Status").setValue("free")

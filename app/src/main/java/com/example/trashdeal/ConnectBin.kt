@@ -168,16 +168,16 @@ class ConnectBin : AppCompatActivity() {
                 }
             }
             plasticBtn.setOnClickListener{
-                useBin(plasticBin,"PlasticBin","Plastic-waste")
+                useBin(plasticBin,"PlasticBin","Plastic Waste")
             }
             ewasteBtn.setOnClickListener{
                 useBin(ewasteBin,"EWaste","E-Waste")
             }
             dryBtn.setOnClickListener{
-                useBin(dryBin,"DryWaste","Dry-Waste")
+                useBin(dryBin,"DryWaste","Dry Waste")
             }
             wetBtn.setOnClickListener{
-                useBin(wetBin,"WetWaste","Wet-Waste")
+                useBin(wetBin,"WetWaste","Wet Waste")
             }
         }
         binding = ActivityConnectBinBinding.inflate(layoutInflater)
