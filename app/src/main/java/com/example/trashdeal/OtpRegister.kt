@@ -34,7 +34,7 @@ class OtpRegister : AppCompatActivity() {
 
         val resendBtn = findViewById<Button>(R.id.resendBtn)
         resendBtn.setOnClickListener{
-
+            Toast.makeText(this,"resending OTP",Toast.LENGTH_SHORT).show()
         }
         val backBtn = findViewById<ImageView>(R.id.back_btn)
         backBtn.setOnClickListener{
