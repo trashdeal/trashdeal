@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import java.util.*
 
 
@@ -35,6 +37,8 @@ class ConnectBin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        val plasticimage = findViewById<ImageView>(R.id.pbinicon)
+        val spinnerr = findViewById<ProgressBar>(R.id.progressBar1)
         var userBinId = intent.getStringExtra("userBin").toString()
         var userBin = ""
         var binLocation = Location("")
@@ -62,7 +66,18 @@ class ConnectBin : AppCompatActivity() {
                         val binIcon = findViewById<ImageView>(imageViewID)
                         when {
                             binType.WasteLevel in 0..30 -> {
-                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
+                                Picasso.get()
+                                    .load(R.drawable.binempty)
+                                    .into(plasticimage, object : Callback {
+                                        override fun onSuccess() {
+                                            spinnerr.setVisibility(View.GONE)
+                                        }
+
+                                        override fun onError(e: Exception?) {
+                                            spinnerr.setVisibility(View.VISIBLE);
+                                        }
+                                    })
+                        //        binIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
                             }
                             binType.WasteLevel in 31..50 -> {
                                 binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostempty))
@@ -75,7 +90,7 @@ class ConnectBin : AppCompatActivity() {
                             }
                         }
                     }
-                    updateBinRT(plasticBin,R.id.pbinicon)
+                   // updateBinRT(plasticBin,R.id.pbinicon)
                     updateBinRT(ewasteBin,R.id.ewasteicon)
                     updateBinRT(dryBin,R.id.drywasteicon)
                     updateBinRT(wetBin,R.id.wetwasteicon)
@@ -180,6 +195,7 @@ class ConnectBin : AppCompatActivity() {
                 useBin(wetBin,"WetWaste","Wet Waste")
             }
         }
+
         binding = ActivityConnectBinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.title = "My Bin"
@@ -219,6 +235,9 @@ class ConnectBin : AppCompatActivity() {
                 }
                 true
             }
+        val spinner = findViewById<ProgressBar>(R.id.progressBar1)
+        spinner.setVisibility(View.VISIBLE);
+
 
         val adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
