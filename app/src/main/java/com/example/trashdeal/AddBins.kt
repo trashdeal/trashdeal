@@ -10,11 +10,13 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.MenuItem
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.trashdeal.databinding.ActivityAddBinsBinding
 import com.google.android.gms.location.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -28,10 +30,13 @@ class AddBins : AppCompatActivity() {
     private var PERMISSION_ID = 1000
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var binding: ActivityAddBinsBinding
     var binLocation: Location = Location("")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_bins)
+        binding = ActivityAddBinsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar!!.title = "Bin Addition"
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
@@ -84,6 +89,45 @@ class AddBins : AppCompatActivity() {
             binLocationlongitude.setText(binLocation.longitude.toString())
             binAddress.setText(getCityName(binLocation.latitude,binLocation.longitude))
         }
+        val adapter = ArrayAdapter.createFromResource(this, R.array.AddBinsDropdown, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = adapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                conditionNull()
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                if(binding.spinner.selectedItemPosition==0){
+                }
+                if(binding.spinner.selectedItemPosition==1){
+                    condition1()
+                }
+                if(binding.spinner.selectedItemPosition==2){
+                    condition2()
+                }
+                if(binding.spinner.selectedItemPosition==3){
+                    condition3()
+                }
+            }
+        }
+    }
+    private fun conditionNull() {
+        Toast.makeText(this, "Add Bin", Toast.LENGTH_LONG).show()
+    }
+    private fun condition1() {
+        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
+    }
+    private fun condition2() {
+        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
+    }
+    private fun condition3() {
+        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
     private fun CheckPermission():Boolean{
         //this function will return a boolean
