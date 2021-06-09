@@ -37,8 +37,6 @@ class ConnectBin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        val plasticimage = findViewById<ImageView>(R.id.pbinicon)
-        val spinnerr = findViewById<ProgressBar>(R.id.progressBar1)
         var userBinId = intent.getStringExtra("userBin").toString()
         var userBin = ""
         var binLocation = Location("")
@@ -62,38 +60,41 @@ class ConnectBin : AppCompatActivity() {
                     ewasteBin = dataSnapshot.child("EWaste").getValue(Bin::class.java)!!
                     dryBin = dataSnapshot.child("DryWaste").getValue(Bin::class.java)!!
                     wetBin = dataSnapshot.child("WetWaste").getValue(Bin::class.java)!!
-                    fun updateBinRT(binType: Bin, imageViewID: Int){
+                    fun updateBinRT(binType: Bin, imageViewID: Int, progressBarID: Int){
+                        val spinner = findViewById<ProgressBar>(progressBarID)
                         val binIcon = findViewById<ImageView>(imageViewID)
+                        fun loadIcon(levelIconID: Int){
+                            Picasso.get()
+                                .load(levelIconID)
+                                .into(binIcon, object : Callback {
+                                    override fun onSuccess() {
+                                        spinner.visibility = View.GONE
+                                    }
+
+                                    override fun onError(e: Exception?) {
+                                        spinner.visibility = View.VISIBLE;
+                                    }
+                                })
+                        }
                         when {
                             binType.WasteLevel in 0..30 -> {
-                                Picasso.get()
-                                    .load(R.drawable.binempty)
-                                    .into(plasticimage, object : Callback {
-                                        override fun onSuccess() {
-                                            spinnerr.setVisibility(View.GONE)
-                                        }
-
-                                        override fun onError(e: Exception?) {
-                                            spinnerr.setVisibility(View.VISIBLE);
-                                        }
-                                    })
-                        //        binIcon.setImageDrawable(resources.getDrawable(R.drawable.binempty))
+                                loadIcon(R.drawable.binempty)
                             }
                             binType.WasteLevel in 31..50 -> {
-                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostempty))
+                                loadIcon(R.drawable.binalmostempty)
                             }
                             binType.WasteLevel in 51..89 -> {
-                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binalmostfull))
+                                loadIcon(R.drawable.binalmostfull)
                             }
                             binType.WasteLevel >=90 -> {
-                                binIcon.setImageDrawable(resources.getDrawable(R.drawable.binfull))
+                                loadIcon(R.drawable.binfull)
                             }
                         }
                     }
-                   // updateBinRT(plasticBin,R.id.pbinicon)
-                    updateBinRT(ewasteBin,R.id.ewasteicon)
-                    updateBinRT(dryBin,R.id.drywasteicon)
-                    updateBinRT(wetBin,R.id.wetwasteicon)
+                    updateBinRT(plasticBin,R.id.pbinicon,R.id.progressBar1)
+                    updateBinRT(ewasteBin,R.id.ewasteicon,R.id.progressBar2)
+                    updateBinRT(dryBin,R.id.drywasteicon,R.id.progressBar3)
+                    updateBinRT(wetBin,R.id.wetwasteicon,R.id.progressBar4)
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                     // Getting Post failed, log a message
