@@ -9,6 +9,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -46,16 +47,39 @@ class AddBins : AppCompatActivity() {
         var binLocationlatitude = findViewById<EditText>(R.id.binLatInp)
         var binLocationlongitude = findViewById<EditText>(R.id.binLongInp)
         var binAddress = findViewById<EditText>(R.id.binAddressInp)
+        var selectedCollector = "Select Trash Collector"
         val doc: DocumentReference = fStore.collection("binLocation").document()
+        var collector = arrayListOf("Select Trash Collector")
+        val doc1 = fStore.collection("TrashCollector")
+        doc1.get().addOnSuccessListener {
+            for(document in it){
+                collector.add(document.data["Name"].toString())
+            }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item,collector)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinner.adapter = adapter
+            binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    selectedCollector = "Select Trash Collector"
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                    selectedCollector = binding.spinner.selectedItem.toString()
+                }
+            }
+        }
+
         val addBtn = findViewById<Button>(R.id.addBinBtn)
         addBtn.setOnClickListener{
             if(binName.text.toString().isEmpty() || binLocationlatitude.text.toString().isEmpty() ||
-                binLocationlongitude.text.toString().isEmpty() || binAddress.text.toString().isEmpty() ){
+                binLocationlongitude.text.toString().isEmpty() || binAddress.text.toString().isEmpty() || selectedCollector == "Select Trash Collector"){
                 Toast.makeText(this,"Empty Fields", Toast.LENGTH_SHORT).show()
             }else{
-                val binLoc = hashMapOf("Bin Name" to binName.text.toString(),
+                val binLoc = hashMapOf(
+                    "Bin Name" to binName.text.toString(),
                     "Latitude" to binLocationlatitude.text.toString().toDouble(),
-                    "Longitude" to binLocationlongitude.text.toString().toDouble())
+                    "Longitude" to binLocationlongitude.text.toString().toDouble(),
+                    "TrashCollector" to selectedCollector
+                )
                 doc.set(binLoc).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val refMain = FirebaseDatabase.getInstance().getReference(binName.text.toString())
@@ -89,39 +113,6 @@ class AddBins : AppCompatActivity() {
             binLocationlongitude.setText(binLocation.longitude.toString())
             binAddress.setText(getCityName(binLocation.latitude,binLocation.longitude))
         }
-        val adapter = ArrayAdapter.createFromResource(this, R.array.AddBinsDropdown, android.R.layout.simple_spinner_item)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinner.adapter = adapter
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                conditionNull()
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                if(binding.spinner.selectedItemPosition==0){
-                }
-                if(binding.spinner.selectedItemPosition==1){
-                    condition1()
-                }
-                if(binding.spinner.selectedItemPosition==2){
-                    condition2()
-                }
-                if(binding.spinner.selectedItemPosition==3){
-                    condition3()
-                }
-            }
-        }
-    }
-    private fun conditionNull() {
-        Toast.makeText(this, "Add Bin", Toast.LENGTH_LONG).show()
-    }
-    private fun condition1() {
-        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
-    }
-    private fun condition2() {
-        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
-    }
-    private fun condition3() {
-        Toast.makeText(this, " " + binding.spinner.selectedItem, Toast.LENGTH_LONG).show()
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){

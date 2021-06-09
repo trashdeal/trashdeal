@@ -128,34 +128,33 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.749" />
 
     <Button
         android:id="@+id/addBinBtn"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:background="@drawable/thistory"
-        android:drawableRight="@drawable/addbinicon"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Add Bin"
+        android:text="ADD BIN"
         android:textAllCaps="false"
-        android:textSize="15dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintVertical_bias="0.861" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView

@@ -35,9 +35,9 @@ class FullBinsAdapter (private val context: Context,
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Notify Collector")
             builder.setIcon(R.drawable.notifydialog)
-            builder.setMessage("Send notification to collector to collect the waste from bin ${dataSource[position].binType}")
+            builder.setMessage("Send notification to ${dataSource[position].collector} to collect the waste from bin ${dataSource[position].binType}")
             builder.setPositiveButton("YES") { dialog, which ->
-
+                //work in progress
             }
             builder.setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss() }

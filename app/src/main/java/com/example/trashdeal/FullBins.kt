@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.trashdeal.databinding.ActivityAdminHomeBinding
 import com.example.trashdeal.databinding.ActivityFullBinsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -68,6 +67,7 @@ class FullBins : AppCompatActivity() {
             for(document in it){
                 val binTypes = arrayOf("DryWaste","EWaste","PlasticBin","WetWaste")
                 val refMain = FirebaseDatabase.getInstance().getReference(document.data["Bin Name"].toString())
+                val collector = document.data["TrashCollector"].toString()
                 for(bin in binTypes){
                     refMain.child(bin).child("WasteLevel").get().addOnSuccessListener {
                         if(it.value.toString().toInt() >= 90){
@@ -75,7 +75,7 @@ class FullBins : AppCompatActivity() {
                             val binName = document.data["Bin Name"].toString()
                             binLocation.latitude = document.data["Latitude"] as Double
                             binLocation.longitude = document.data["Longitude"] as Double
-                            val fullBin = FullBin(binName,bin,getCityName(binLocation.latitude,binLocation.longitude))
+                            val fullBin = FullBin(binName,bin,getCityName(binLocation.latitude,binLocation.longitude),collector)
                             fullBins.add(fullBin)
                             val adapter = FullBinsAdapter(this, fullBins)
                             listview.adapter = adapter
