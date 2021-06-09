@@ -59,9 +59,9 @@ class ConnectBin : AppCompatActivity() {
                     dryBin = dataSnapshot.child("DryWaste").getValue(Bin::class.java)!!
                     wetBin = dataSnapshot.child("WetWaste").getValue(Bin::class.java)!!
                     fun updateBinRT(binType: Bin, imageViewID: Int, progressBarID: Int){
-                        val spinner = findViewById<ProgressBar>(progressBarID)
-                        val binIcon = findViewById<ImageView>(imageViewID)
                         fun loadIcon(levelIconID: Int){
+                            val spinner = findViewById<ProgressBar>(progressBarID)
+                            val binIcon = findViewById<ImageView>(imageViewID)
                             Picasso.get()
                                 .load(levelIconID)
                                 .into(binIcon, object : Callback {
