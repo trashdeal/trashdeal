@@ -47,9 +47,9 @@ class AddBins : AppCompatActivity() {
         var binLocationlatitude = findViewById<EditText>(R.id.binLatInp)
         var binLocationlongitude = findViewById<EditText>(R.id.binLongInp)
         var binAddress = findViewById<EditText>(R.id.binAddressInp)
-        var selectedCollector = "Select Trash Collector"
+        var selectedCollector = "Select Collector"
         val doc: DocumentReference = fStore.collection("binLocation").document()
-        var collector = arrayListOf("Select Trash Collector")
+        var collector = arrayListOf("Select Collector")
         val doc1 = fStore.collection("TrashCollector")
         doc1.get().addOnSuccessListener {
             for(document in it){
@@ -60,7 +60,7 @@ class AddBins : AppCompatActivity() {
             binding.spinner.adapter = adapter
             binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    selectedCollector = "Select Trash Collector"
+                    selectedCollector = "Select Collector"
                 }
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                     selectedCollector = binding.spinner.selectedItem.toString()
@@ -71,7 +71,7 @@ class AddBins : AppCompatActivity() {
         val addBtn = findViewById<Button>(R.id.addBinBtn)
         addBtn.setOnClickListener{
             if(binName.text.toString().isEmpty() || binLocationlatitude.text.toString().isEmpty() ||
-                binLocationlongitude.text.toString().isEmpty() || binAddress.text.toString().isEmpty() || selectedCollector == "Select Trash Collector"){
+                binLocationlongitude.text.toString().isEmpty() || binAddress.text.toString().isEmpty() || selectedCollector == "Select Collector"){
                 Toast.makeText(this,"Empty Fields", Toast.LENGTH_SHORT).show()
             }else{
                 val binLoc = hashMapOf(
