@@ -27,13 +27,11 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.util.*
 
-
 class ConnectBin : AppCompatActivity() {
     private lateinit var fStore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     lateinit var binding: ActivityConnectBinBinding
     lateinit var toggle: ActionBarDrawerToggle
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
