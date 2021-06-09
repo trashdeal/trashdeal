@@ -21,14 +21,14 @@
         android:src="@drawable/redeempointsicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
@@ -38,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.500"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.370">
+        app:layout_constraintVertical_bias="0.380">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -51,9 +51,10 @@
                 android:layout_height="wrap_content"
                 android:text="+200xp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="35sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.301" />
@@ -63,13 +64,13 @@
                 android:layout_height="wrap_content"
                 android:text="Earned"
                 android:textColor="#000"
-                android:textSize="20dp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.78" />
+                app:layout_constraintVertical_bias="0.733" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -123,7 +124,7 @@
                                 android:textStyle="bold"
                                 android:layout_centerInParent="true"
                                 android:textColorHighlight="@color/colorPrimary"
-                                android:textSize="16sp"></TextView>
+                                android:textSize="15sp"></TextView>
 
                             <Button
                                 android:id="@+id/redeemptsBtn"
@@ -156,7 +157,7 @@
                                 android:text="Add Bank Details"
                                 android:textColor="#fff"
                                 android:textStyle="bold"
-                                android:textSize="16sp"></TextView>
+                                android:textSize="15sp"></TextView>
 
                             <Button
                                 android:id="@+id/bankdetailsBtn"
@@ -195,11 +196,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/wetwasteicon"
-                                android:text="Redeem istory"
+                                android:text="Redeem History"
                                 android:textStyle="bold"
                                 android:layout_centerInParent="true"
                                 android:textColor="#fff"
-                                android:textSize="16sp"></TextView>
+                                android:textSize="15sp"></TextView>
 
                             <Button
                                 android:id="@+id/historyBtn"
@@ -231,7 +232,7 @@
                                 android:textStyle="bold"
                                 android:layout_centerInParent="true"
                                 android:textColor="#fff"
-                                android:textSize="16sp"></TextView>
+                                android:textSize="15sp"></TextView>
 
                             <Button
                                 android:id="@+id/friendBtn"
