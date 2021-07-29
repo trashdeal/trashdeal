@@ -16,7 +16,7 @@ class IntroVideo : AppCompatActivity() {
         setContentView(R.layout.activity_intro_video)
         val videoView = findViewById<VideoView>(R.id.videoView)
         val skipBtn =  findViewById<TextView>(R.id.skipBtn)
-        val video = Uri.parse("android.resource://" + packageName + "/" + R.raw.video)
+        val video = Uri.parse("android.resource://" + packageName + "/" + R.raw.td)
         videoView.setVideoURI(video)
         videoView.setOnCompletionListener(MediaPlayer.OnCompletionListener {
             startActivity(Intent(applicationContext, TandC::class.java))
